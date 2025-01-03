@@ -194,13 +194,8 @@
 
 .bold-text {
   font-weight: 700;
-  display: inline-grid;
+  display: table-caption;
 }
-.thin-text {
-  font-weight: normal; 
-  margin-left: 3px;
-}
-
 
 .game-container {
   backdrop-filter: blur(13px);
