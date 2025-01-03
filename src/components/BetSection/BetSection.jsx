@@ -42,7 +42,7 @@ function BetSection({ setLoading, resultData, queryParams, allBetData }) {
                 activeTab === 1 ? "text-all-bets-active" : "text-all-bets"
               }`}
             >
-              My bets
+              My Bets
             </div>
           </div>
         </li>

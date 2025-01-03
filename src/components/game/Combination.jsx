@@ -13,7 +13,7 @@ function Combination({ amount, resultData }) {
   };
 
   let multiplier = resultData?.winCombo?.multiplier;
- 
+
   return (
     <div className="combinations">
       <div className="combinations-list">
@@ -172,7 +172,9 @@ function Combination({ amount, resultData }) {
             onMouseEnter={() => handleMouseEnter(0.1)}
             onMouseLeave={handleMouseLeave}
             className={`${
-              multiplier===0.1 ? "combination-list-item_01" : "combination-list-item"
+              multiplier === 0.1
+                ? "combination-list-item_01"
+                : "combination-list-item"
             }`}
           >
             <div className="combination-list-ball">
@@ -221,7 +223,12 @@ function Combination({ amount, resultData }) {
       <div className="combination-footer">
         <div className="combination-footer-text">
           <div className="bold-text">
-            Profit: {profit ? profit.toFixed(2) : "0.00"}
+            Profit:
+            {profit ? (
+              profit.toFixed(2)
+            ) : (
+              <span className="thin-text">0.00</span>
+            )}
           </div>
           {/* <div></div> */}
         </div>
