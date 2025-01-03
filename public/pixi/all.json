@@ -1,0 +1,155 @@
+{
+	"frames": {
+		"baseball.png": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 168,
+				"h": 168
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 168,
+				"h": 168
+			},
+			"sourceSize": {
+				"w": 168,
+				"h": 168
+			}
+		},
+		"basketball.png": {
+			"frame": {
+				"x": 171,
+				"y": 1,
+				"w": 168,
+				"h": 168
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 168,
+				"h": 168
+			},
+			"sourceSize": {
+				"w": 168,
+				"h": 168
+			}
+		},
+		"bowling.png": {
+			"frame": {
+				"x": 1,
+				"y": 171,
+				"w": 168,
+				"h": 168
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 168,
+				"h": 168
+			},
+			"sourceSize": {
+				"w": 168,
+				"h": 168
+			}
+		},
+		"football.png": {
+			"frame": {
+				"x": 171,
+				"y": 171,
+				"w": 168,
+				"h": 168
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 168,
+				"h": 168
+			},
+			"sourceSize": {
+				"w": 168,
+				"h": 168
+			}
+		},
+		"pool.png": {
+			"frame": {
+				"x": 341,
+				"y": 1,
+				"w": 169,
+				"h": 168
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 169,
+				"h": 168
+			},
+			"sourceSize": {
+				"w": 169,
+				"h": 168
+			}
+		},
+		"tennis.png": {
+			"frame": {
+				"x": 341,
+				"y": 171,
+				"w": 168,
+				"h": 168
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 168,
+				"h": 168
+			},
+			"sourceSize": {
+				"w": 168,
+				"h": 168
+			}
+		},
+		"volleyball.png": {
+			"frame": {
+				"x": 1,
+				"y": 341,
+				"w": 168,
+				"h": 168
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 168,
+				"h": 168
+			},
+			"sourceSize": {
+				"w": 168,
+				"h": 168
+			}
+		}
+	},
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "all.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 511,
+			"h": 510
+		},
+		"scale": "1"
+	}
+}
