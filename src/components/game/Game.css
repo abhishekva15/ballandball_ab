@@ -197,6 +197,11 @@
   display: table-caption;
 }
 
+.thin-text {
+  font-weight: 300; 
+}
+
+
 .game-container {
   backdrop-filter: blur(13px);
   background: linear-gradient(
