@@ -17,6 +17,7 @@ function Game({
   info,
   isBetting,
   socket,
+  winCombo,
   // resultData,
 }) {
   const MIN_AMOUNT = 10;
@@ -56,7 +57,11 @@ function Game({
   return (
     <div className="game-container">
       {/* Combination */}
-      <Combination resultData={resultData} amount={amount}></Combination>
+      <Combination
+        winCombo={winCombo}
+        resultData={resultData}
+        amount={amount}
+      ></Combination>
 
       {/* Ball slot */}
       <BallSlot

@@ -28,13 +28,13 @@ export const rulesData = [
       p11: "Ball & Ball has RTP 97.0%",
     },
   },
-  {
-    title: "Autoplay",
-    content: {
-      p1: "You can enable autobet mode and configure the number of rounds from 5 to 100",
-      p2: `You can stop autobetting by clicking on "Stop Autobet" button.`,
-    },
-  },
+  // {
+  //   title: "Autoplay",
+  //   content: {
+  //     p1: "You can enable autobet mode and configure the number of rounds from 5 to 100",
+  //     p2: `You can stop autobetting by clicking on "Stop Autobet" button.`,
+  //   },
+  // },
   {
     title: "Settings",
 
@@ -52,16 +52,15 @@ export const rulesData = [
       heading:
         "At the bottom of each Turbo game there is a panel with information about:",
       p1: `"All bets" - recently played games across all users`,
-      p2: `"Top bets" - recent winning bets with multiplier above x10`,
-      p3: `"My bets" - list of your recent bets`,
+      p2: `"My bets" - list of your recent bets`,
       heading2: "You can click on any bet to see the details.",
     },
   },
   {
     title: "Version",
     content: {
-      p1: "Game version: \"1.01\"",
-      p2: "RNG version: \"2.0.0\"",
+      p1: `Game version: "1.0.3"`,
+      p2: `RNG version: "2.0.0"`,
     },
   },
   // Add more rules here as needed

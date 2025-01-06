@@ -27,6 +27,7 @@ function Home() {
   const [allBetData, setAllBetData] = useState([]);
   const [error, setError] = useState("");
   const [errorModal, setErrorModal] = useState(false);
+  const [winCombo, setWinCombo] = useState(false);
   const { sound } = useContext(SoundContext);
 
   let queryParams = {};
@@ -129,14 +130,17 @@ function Home() {
     if (sound) {
       playSpinSound();
     }
+    setWinCombo(false);
 
     socket.emit("SPIN", { betAmt: amount });
 
     socket.once("BET_RESULT", (data) => {
+      console.log(data)
       setTimeout(() => {
-        if (sound) {
+        if (sound ) {
           playWinSound();
         }
+        setWinCombo(true);
         handleResultData(data);
       }, 1300);
     });
@@ -171,6 +175,7 @@ function Home() {
               amount={amount}
               setAmount={setAmount}
               socket={socket}
+              winCombo={winCombo}
             ></Game>
           </div>
           <div className="game-statics">

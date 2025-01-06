@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import { rulesData } from '../../utility/staticData';
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
+import { IoCloseSharp } from "react-icons/io5";
 import '../modals/Modal.css'
 
 function RulesModal({ handleRules, setOpenRules }) {
@@ -46,14 +47,14 @@ function RulesModal({ handleRules, setOpenRules }) {
             <div className="rule-para ">{el.content.p11}</div>
           </>
         );
+      // case 2:
+      //   return (
+      //     <>
+      //       <div className="rule-para r-bottom">{el.content.p1}</div>
+      //       <div className="rule-para r-bottom">{el.content.p2}</div>
+      //     </>
+      //   );
       case 2:
-        return (
-          <>
-            <div className="rule-para r-bottom">{el.content.p1}</div>
-            <div className="rule-para r-bottom">{el.content.p2}</div>
-          </>
-        );
-      case 3:
         return (
           <>
             <div className="rule-para r-bottom">{el.content.heading}</div>
@@ -62,13 +63,13 @@ function RulesModal({ handleRules, setOpenRules }) {
             <li className="rule-para">{el.content.p3}</li>
           </>
         );
-      case 4:
+      case 3:
         return (
           <>
             <div className="rule-para r-bottom">{el.content.heading}</div>
             <li className="rule-para">{el.content.p1}</li>
-            <li className="rule-para">{el.content.p2}</li>
-            <li className="rule-para r-bottom">{el.content.p3}</li>
+            <li className="rule-para r-bottom">{el.content.p2}</li>
+
             <div className="rule-para">{el.content.heading2}</div>
           </>
         );
@@ -87,7 +88,7 @@ function RulesModal({ handleRules, setOpenRules }) {
         <div className="modal-head-1">
           <div className="limit-head">Rules</div>
           <div onClick={handleRules}>
-            <IoMdClose className="close" />
+            <IoCloseSharp className="close" />
           </div>
         </div>
         <p className="rules-para-1">

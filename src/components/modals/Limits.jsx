@@ -1,5 +1,6 @@
 import React from 'react'
 import { IoMdClose } from "react-icons/io";
+import { IoCloseSharp } from "react-icons/io5";
 import '../modals/Modal.css'
 
 function Limits({ handleLimits, setOpenLimits }) {
@@ -20,7 +21,7 @@ function Limits({ handleLimits, setOpenLimits }) {
             Limits
           </div>
           <div onClick={handleLimits}>
-            <IoMdClose
+            <IoCloseSharp
               className="close"
               style={{ fontSize: "18px", fontWeight: "bolder" }}
             />
