@@ -49,6 +49,7 @@ export class Payline extends Container {
     const color = clrArr[this.resData.winCombo?.multiplier];
     console.log("asdasdasD", color);
     // Map idx values to finalIdx using the mapping array
+
     const finalIdx = idx.map((i) =>
       i >= 0 && i < mapping.length ? mapping[i] : null
     );
@@ -59,6 +60,15 @@ export class Payline extends Container {
       .forEach((i) => {
         this.createCircle(i, color, true);
       });
+
+    const arr = [0, 1, 2, 3, 4];
+
+    // console.log(this.reel.reels[i].container.children[2]);
+    arr.forEach((i) => {
+      if (!idx.includes(i)) {
+        this.reel.reels[i].container.children[2].alpha = 0.5;
+      }
+    });
   }
 
   createCircle(i, color, animated = false) {
@@ -69,8 +79,8 @@ export class Payline extends Container {
       radius = this.reel.cellWidth * 0.25;
       circleWidth = 2.5;
     } else {
-      radius = this.reel.cellWidth * 0.344;
-      circleWidth = 5;
+      radius = this.reel.cellWidth * 0.35;
+      circleWidth = 2;
     }
 
     const cell = this.reel.cellContainer.children[i];
@@ -85,10 +95,13 @@ export class Payline extends Container {
     }
 
     item.position.set(cell.x, cell.y - this.reel.cellHeight / 2.8);
+    // item.arc(0, 0, radius, 0, 10 * Math.PI);
 
     // Add a blur filter
     const blurFilter = new BlurFilter();
-    blurFilter.blur = 3; // Adjust blur intensity as needed
+    blurFilter.blur = 1;
+    blurFilter.quality = 2;
+    blurFilter.resolution = 5;
     item.filters = [blurFilter];
 
     // if (animated) {
@@ -106,6 +119,12 @@ export class Payline extends Container {
   }
   reset() {
     this.removeChildren();
+    const arr = [0, 1, 2, 3, 4];
+
+    // console.log(this.reel.reels[i].container.children[2]);
+    arr.forEach((i) => {
+      this.reel.reels[i].container.children[2].alpha = 1;
+    });
     // this.removeFromParent();
   }
   // clearCircle(i) {

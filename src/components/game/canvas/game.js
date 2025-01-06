@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import { Application, Assets } from "pixi.js";
+import { Application, Assets, Graphics, Sprite } from "pixi.js";
 import { useEffect, useRef, useState } from "react";
 import { loadAssets } from "./utils/loadAssets";
 import { Reel } from "./components/reel/Reel";
@@ -35,9 +35,60 @@ const Canvas = ({ setSpin, resultData, socket }) => {
     };
     fetchTexture();
   }, []);
+  const createGradientOverlay = (app) => {
+    const createGradient = (width, height, startAlpha, endAlpha) => {
+      const gradient = new Graphics();
+
+      const steps = 50; // Number of steps for smoother gradient
+      const alphaStep = (endAlpha - startAlpha) / steps;
+      const stepHeight = height / steps;
+
+      for (let i = 0; i < steps; i++) {
+        const currentAlpha = startAlpha + alphaStep * i;
+        gradient.beginFill(0x000000, currentAlpha);
+        gradient.drawRect(0, i * stepHeight, width, stepHeight);
+        gradient.endFill();
+      }
+
+      return gradient;
+    };
+
+    // Create top gradient
+    const topGradient = createGradient(
+      app.screen.width,
+      app.screen.height * 0.2,
+      0.9,
+      0.1
+    );
+    const topGradientTexture = app.renderer.generateTexture(topGradient);
+    const topGradientSprite = new Sprite(topGradientTexture);
+    topGradientSprite.y = 0; // Position at the top
+    app.stage.addChild(topGradientSprite);
+
+    // Create bottom gradient
+    const bottomGradient = createGradient(
+      app.screen.width,
+      app.screen.height * 0.18,
+      0.1,
+      0.9
+    );
+    const bottomGradientTexture = app.renderer.generateTexture(bottomGradient);
+    const bottomGradientSprite = new Sprite(bottomGradientTexture);
+    bottomGradientSprite.y = app.screen.height - bottomGradientSprite.height; // Position at the bottom
+    app.stage.addChild(bottomGradientSprite);
+
+    // Update gradients on resize
+    app.renderer.on("resize", () => {
+      topGradientSprite.width = app.screen.width;
+      topGradientSprite.height = app.screen.height * 0.2;
+
+      bottomGradientSprite.width = app.screen.width;
+      bottomGradientSprite.height = app.screen.height * 0.18;
+      bottomGradientSprite.y = app.screen.height - bottomGradientSprite.height;
+    });
+  };
 
   const initializeGame = async (texture) => {
-    
     if (texture) {
       console.log("Initializing game");
       const app = new Application({
@@ -56,10 +107,10 @@ const Canvas = ({ setSpin, resultData, socket }) => {
       // window.__PIXI_APP__ = app;
 
       appRef.current = app;
-
       let reel = await new Reel(app);
       const payline = new Payline(reel, app);
       let sp = new SpinAnimation(reel, app, payline);
+
       // reel.createReel();
       socket.on("BET_RESULT", (data) => {
         console.log(data);
@@ -76,6 +127,8 @@ const Canvas = ({ setSpin, resultData, socket }) => {
       // setSpin(sp);
       app.stage.addChild(reel);
       app.stage.addChild(payline);
+      createGradientOverlay(app);
+
       // app.stage.addChild(btn);
     }
   };

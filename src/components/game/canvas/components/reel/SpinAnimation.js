@@ -68,7 +68,7 @@ export class SpinAnimation {
     console.log("All reels have stopped!");
     eventEmitter.emit("reelComplete", () => {
       const reelComplete = true;
-      return reelComplete
+      return reelComplete;
     });
     this.running = false; // Mark that spinning has stopped
     this.reset();
@@ -149,7 +149,8 @@ export class SpinAnimation {
       console.log(this.outcome[i]);
 
       const target = this.outcome[i].length * (3 + i * 2 + extra);
-      const time = 2500 + i * 600 + extra * 600;
+      const time = 100 + i * 300 + extra;
+      const speed = time / (target - r.position);
 
       this.tweenTo(
         r,
@@ -167,7 +168,12 @@ export class SpinAnimation {
           if (i === this.reel.reels.length - 1) {
             this.reelsComplete(); // Call `reelsComplete` for the last reel
           }
-        }
+        },
+        (t) => 1 - (1 - t) * (1 - t),
+        Date.now(),
+        false,
+        0,
+        speed
       );
     }
 
@@ -184,7 +190,7 @@ export class SpinAnimation {
           s.y =
             ((r.position + j) % r.symbols.length) * this.reel.cellHeight -
             this.reel.cellHeight +
-            this.reel.cellHeight *.15;
+            this.reel.cellHeight * 0.15;
 
           // If the symbol moves off-screen, assign a new texture from the predefined outcome
           if (s.y < 0 && prevY > this.reel.cellHeight) {
