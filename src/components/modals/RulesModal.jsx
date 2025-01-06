@@ -4,8 +4,14 @@ import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 import '../modals/Modal.css'
 
-function RulesModal({ handleRules }) {
+function RulesModal({ handleRules, setOpenRules }) {
   const [openIndex, setOpenIndex] = useState(null);
+
+  const handleOutsideClick = (e) => {
+    if (e.target === e.currentTarget) {
+      setOpenRules(false);
+    }
+  };
 
   const toggleAccordion = (index) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -76,7 +82,7 @@ function RulesModal({ handleRules }) {
     }
   };
   return (
-    <div className="overlay">
+    <div className="overlay" onClick={handleOutsideClick}>
       <div className="modal-new modal-new-rules">
         <div className="modal-head-1">
           <div className="limit-head">Rules</div>
@@ -85,7 +91,8 @@ function RulesModal({ handleRules }) {
           </div>
         </div>
         <p className="rules-para-1">
-          Collect the coolest balls combination and take your winnings!⚽️🏀🎾⚾🏐
+          Collect the coolest balls combination and take your
+          winnings!⚽️🏀🎾⚾🏐
         </p>
 
         <div className="modal-body">

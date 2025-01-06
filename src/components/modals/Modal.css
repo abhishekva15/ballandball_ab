@@ -116,6 +116,10 @@
   cursor: pointer;
 }
 
+.close-icon-s:hover{
+  color: #fff;
+}
+
 .setting-title {
   color: hsla(0, 0%, 100%, 0.5);
   font-size: 1rem;

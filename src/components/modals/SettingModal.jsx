@@ -1,42 +1,45 @@
 import React, { useContext } from "react";
 import "../modals/Modal.css";
 import { IoClose } from "react-icons/io5";
-
 import { GrNotes } from "react-icons/gr";
-
-
 import { HiSpeakerWave } from "react-icons/hi2";
 import { BsFillRecord2Fill } from "react-icons/bs";
 import { SoundContext } from "../../context/SoundContext";
 import { setSoundVolume } from "../../utility/gameSettings";
 
-
-function SettingModal({ handleSetting, handleLimits, handleRules, info }) {
+function SettingModal({
+  handleSetting,
+  handleLimits,
+  handleRules,
+  info,
+  menuRef ,
+}) {
   const { sound, setSound } = useContext(SoundContext);
+  
 
   const step = 1;
   const min = 0;
   const max = 100;
 
-   const sliderStyles = (value) => {
-     const percent = (value * 100) / 100;
-     return {
-       active: { transform: `translateX(${percent}%)` },
-       bg: { transform: `translateX(-${100 - percent}%)` },
-       btn: { transform: `translateX(${100 - percent}%)` },
-     };
-   };
+  const sliderStyles = (value) => {
+    const percent = (value * 100) / 100;
+    return {
+      active: { transform: `translateX(${percent}%)` },
+      bg: { transform: `translateX(-${100 - percent}%)` },
+      btn: { transform: `translateX(${100 - percent}%)` },
+    };
+  };
 
-   const soundStyles = sliderStyles(sound);
+  const soundStyles = sliderStyles(sound);
 
-   const handleSoundChange = (event) => {
-     const value = event.target.value;
-     setSound(value); // Update context state
-     setSoundVolume(value / 100); // Update sound effects volume dynamically
-   };
-   
+  const handleSoundChange = (event) => {
+    const value = event.target.value;
+    setSound(value); // Update context state
+    setSoundVolume(value / 100); // Update sound effects volume dynamically
+  };
+
   return (
-    <div className="setting-modal">
+    <div className="setting-modal" ref={menuRef}>
       <div className="setting-light setting-back-light">
         <div className="setting-inner">
           <div className="setting-title">Settings</div>
@@ -71,8 +74,10 @@ function SettingModal({ handleSetting, handleLimits, handleRules, info }) {
             <div className="setting-item">
               <div
                 className="setting-icon"
-                onClick={() => setSound(sound === 0 ? 50 : 0)}
-                style={{ fontSize: "1.2rem" }}
+                onClick={() => {
+                  setSound(sound === 0 ? 50 : 0);
+                }}
+                style={{ fontSize: "1.2rem", zIndex: "3" }}
               >
                 <HiSpeakerWave />
               </div>

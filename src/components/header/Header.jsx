@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import "../header/Header.css";
 
 import { MdOutlineVolumeOff, MdOutlineVolumeUp } from "react-icons/md";
@@ -20,6 +20,31 @@ function Header({ info, resultData, queryParams }) {
   const [openRules, setOpenRules] = useState(false);
   const [payoutClass, setPayoutClass] = useState("");
   const [payoutData, setPayoutData] = useState("");
+  const menuRef = useRef(null);
+  const buttonRef = useRef(null);
+  
+
+  const handleClickOutside = (event) => {
+    if (
+      menuRef.current &&
+      !menuRef.current.contains(event.target) &&
+      buttonRef.current &&
+      !buttonRef.current.contains(event.target)
+    ) {
+      setSettingModal(false);
+    }
+  };
+
+  useEffect(() => {
+    if (settingModal) {
+      document.addEventListener("click", handleClickOutside);
+    } else {
+      document.removeEventListener("click", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [settingModal]);
 
   const handleSetting = () => {
     setSettingModal((prv) => !prv);
@@ -65,7 +90,7 @@ function Header({ info, resultData, queryParams }) {
       <div className="game-header">
         <div className="game-header-back">
           <Link to={`https://lobby.unicon.vip/?id=${queryParams.id}`}>
-            <IoIosArrowBack style={{color:"#fff", fontWeight:"bold"}} />
+            <IoIosArrowBack style={{ color: "#fff", fontWeight: "bold" }} />
           </Link>
         </div>
         <div className="game-header-logo"></div>
@@ -89,11 +114,16 @@ function Header({ info, resultData, queryParams }) {
             </div>
           </div>
           <div className="game-header-button">
-            <div className="game-header-btton-inner" onClick={handleSetting}>
+            <div
+              className="game-header-btton-inner"
+              onClick={handleSetting}
+              ref={buttonRef}
+            >
               <IoMdSettings style={{ height: "20px", width: "20px" }} />
             </div>
             {settingModal && (
               <SettingModal
+                menuRef={menuRef}
                 info={info}
                 handleRules={handleRules}
                 handleSetting={handleSetting}
@@ -103,8 +133,18 @@ function Header({ info, resultData, queryParams }) {
           </div>
         </div>
       </div>
-      {openLimits && <Limits handleLimits={handleLimits}></Limits>}
-      {openRules && <RulesModal handleRules={handleRules}></RulesModal>}
+      {openLimits && (
+        <Limits
+          setOpenLimits={setOpenLimits}
+          handleLimits={handleLimits}
+        ></Limits>
+      )}
+      {openRules && (
+        <RulesModal
+          setOpenRules={setOpenRules}
+          handleRules={handleRules}
+        ></RulesModal>
+      )}
     </>
   );
 }

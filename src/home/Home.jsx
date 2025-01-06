@@ -138,12 +138,12 @@ function Home() {
           playWinSound();
         }
         handleResultData(data);
-      }, 4900);
+      }, 1300);
     });
     socket.on("ALL_BETS", (data) => {
       setTimeout(() => {
         handleBet(data);
-      }, 4900);
+      }, 1300);
     });
   };
 

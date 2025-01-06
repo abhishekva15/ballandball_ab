@@ -2,9 +2,15 @@ import React from 'react'
 import { IoMdClose } from "react-icons/io";
 import '../modals/Modal.css'
 
-function Limits({ handleLimits }) {
+function Limits({ handleLimits, setOpenLimits }) {
+
+  const handleOutsideClick = (e) => {
+    if (e.target === e.currentTarget) {
+      setOpenLimits(false);
+    }
+  };
   return (
-    <div className="overlay-1">
+    <div className="overlay-1" onClick={handleOutsideClick}>
       <div className="modal-new">
         <div className="modal-head" style={{ paddingLeft: "0" }}>
           <div
