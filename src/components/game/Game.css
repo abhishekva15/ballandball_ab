@@ -619,6 +619,13 @@
   background: none;
   border: none;
   cursor: pointer;
+  transition: border-color 0.1s ease; 
+}
+
+.inpute-button-text:hover {
+  border-color: white; 
+  border-radius: 3px;
+  border: 0.05px solid white;
 }
 
 @media (min-width: 820px) {

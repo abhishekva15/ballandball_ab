@@ -1,19 +1,18 @@
 import React, { useContext } from "react";
 import "../modals/Modal.css";
 import { IoClose } from "react-icons/io5";
-import { GrNotes } from "react-icons/gr";
+// import { GrNotes } from "react-icons/gr";
 import { HiSpeakerWave } from "react-icons/hi2";
-import { BsFillRecord2Fill } from "react-icons/bs";
+// import { BsFillRecord2Fill } from "react-icons/bs";
 import { SoundContext } from "../../context/SoundContext";
 import { setSoundVolume } from "../../utility/gameSettings";
+import limitIcon from "../../assets/Round.svg";
+import rulesicon from "../../assets/File.svg";
 
-function SettingModal({
-  handleSetting,
-  handleLimits,
-  handleRules,
-  info,
-  menuRef ,
-}) {
+
+
+
+function SettingModal({ handleSetting, handleLimits, handleRules, info ,menuRef }) {
   const { sound, setSound } = useContext(SoundContext);
   
 
@@ -58,19 +57,30 @@ function SettingModal({
                 className="setting-icon"
                 style={{ fontSize: "25px", height: "1.5rem", width: "1.5rem" }}
               >
-                <BsFillRecord2Fill />
+      
+                <img
+                  src={limitIcon}
+                  alt="Limit Icon"
+                  style={{ width: "70%", height: "60%" }}
+                />
               </div>
               <div className="setting-name">Limits</div>
             </div>
+
             <div className="setting-link" onClick={handleRules}>
               <div
                 className="setting-icon"
                 style={{ height: "1.5rem", width: "1.5rem" }}
               >
-                <GrNotes />
+                <img
+                  src={rulesicon}
+                  alt="Rules Icon"
+                  style={{ height: "60%", width: "60%" }}
+                />
               </div>
               <div className="setting-name">Rules</div>
             </div>
+
             <div className="setting-item">
               <div
                 className="setting-icon"

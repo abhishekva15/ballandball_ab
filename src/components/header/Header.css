@@ -95,7 +95,14 @@
   min-height: 100%;
   min-width: 100%;
   width: 1.75rem;
+  transition: transform 0.1s ease, background-color 0.1s ease;
 }
+
+.game-header-btton-inner:active {
+  transform: translateY(1px) translateX(1px); 
+  background-color: rgba(0, 0, 0, 0.1); 
+}
+
 
 .game-header-balance-delta {
   position: absolute;

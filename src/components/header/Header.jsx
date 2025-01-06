@@ -1,10 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import "../header/Header.css";
-
 import { MdOutlineVolumeOff, MdOutlineVolumeUp } from "react-icons/md";
-
 import { IoIosArrowBack, IoMdSettings } from "react-icons/io";
-
 import SettingModal from "../modals/SettingModal";
 import Limits from "../modals/Limits";
 import RulesModal from "../modals/RulesModal";
