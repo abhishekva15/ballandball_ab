@@ -139,13 +139,13 @@ export class Reel extends Container {
 
     // Create sprites and assign names
     this.symbols = {
-      0: Object.assign( Sprite.from(imageKeys[0]), { name: "baseball" }),
-      1: Object.assign( Sprite.from(imageKeys[1]), { name: "basketball" }),
-      2: Object.assign( Sprite.from(imageKeys[2]), { name: "bowling" }),
-      3: Object.assign( Sprite.from(imageKeys[3]), { name: "football" }),
-      4: Object.assign( Sprite.from(imageKeys[4]), { name: "pool" }),
-      5: Object.assign( Sprite.from(imageKeys[5]), { name: "tennis" }),
-      6: Object.assign( Sprite.from(imageKeys[6]), { name: "volleyball" }),
+      0: Object.assign(Sprite.from(imageKeys[0]), { name: "baseball" }),
+      1: Object.assign(Sprite.from(imageKeys[1]), { name: "basketball" }),
+      2: Object.assign(Sprite.from(imageKeys[2]), { name: "bowling" }),
+      3: Object.assign(Sprite.from(imageKeys[3]), { name: "football" }),
+      4: Object.assign(Sprite.from(imageKeys[4]), { name: "pool" }),
+      5: Object.assign(Sprite.from(imageKeys[5]), { name: "tennis" }),
+      6: Object.assign(Sprite.from(imageKeys[6]), { name: "volleyball" }),
     };
 
     console.log(this.symbols);

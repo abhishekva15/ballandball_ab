@@ -4,12 +4,12 @@ import { IoClose } from "react-icons/io5";
 
 import { GrNotes } from "react-icons/gr";
 
-
 import { HiSpeakerWave } from "react-icons/hi2";
 import { BsFillRecord2Fill } from "react-icons/bs";
 import { SoundContext } from "../../context/SoundContext";
 import { setSoundVolume } from "../../utility/gameSettings";
-
+import limitIcon from "../../assets/Round.svg";
+import rulesicon from "../../assets/File.svg";
 
 function SettingModal({ handleSetting, handleLimits, handleRules, info }) {
   const { sound, setSound } = useContext(SoundContext);
@@ -18,23 +18,23 @@ function SettingModal({ handleSetting, handleLimits, handleRules, info }) {
   const min = 0;
   const max = 100;
 
-   const sliderStyles = (value) => {
-     const percent = (value * 100) / 100;
-     return {
-       active: { transform: `translateX(${percent}%)` },
-       bg: { transform: `translateX(-${100 - percent}%)` },
-       btn: { transform: `translateX(${100 - percent}%)` },
-     };
-   };
+  const sliderStyles = (value) => {
+    const percent = (value * 100) / 100;
+    return {
+      active: { transform: `translateX(${percent}%)` },
+      bg: { transform: `translateX(-${100 - percent}%)` },
+      btn: { transform: `translateX(${100 - percent}%)` },
+    };
+  };
 
-   const soundStyles = sliderStyles(sound);
+  const soundStyles = sliderStyles(sound);
 
-   const handleSoundChange = (event) => {
-     const value = event.target.value;
-     setSound(value); // Update context state
-     setSoundVolume(value / 100); // Update sound effects volume dynamically
-   };
-   
+  const handleSoundChange = (event) => {
+    const value = event.target.value;
+    setSound(value); // Update context state
+    setSoundVolume(value / 100); // Update sound effects volume dynamically
+  };
+
   return (
     <div className="setting-modal">
       <div className="setting-light setting-back-light">
@@ -55,19 +55,30 @@ function SettingModal({ handleSetting, handleLimits, handleRules, info }) {
                 className="setting-icon"
                 style={{ fontSize: "25px", height: "1.5rem", width: "1.5rem" }}
               >
-                <BsFillRecord2Fill />
+      
+                <img
+                  src={limitIcon}
+                  alt="Limit Icon"
+                  style={{ width: "70%", height: "60%" }}
+                />
               </div>
               <div className="setting-name">Limits</div>
             </div>
+
             <div className="setting-link" onClick={handleRules}>
               <div
                 className="setting-icon"
                 style={{ height: "1.5rem", width: "1.5rem" }}
               >
-                <GrNotes />
+                <img
+                  src={rulesicon}
+                  alt="Rules Icon"
+                  style={{ height: "60%", width: "60%" }}
+                />
               </div>
               <div className="setting-name">Rules</div>
             </div>
+
             <div className="setting-item">
               <div
                 className="setting-icon"
