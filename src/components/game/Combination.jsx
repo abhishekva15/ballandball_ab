@@ -223,7 +223,7 @@ function Combination({ amount, resultData, winCombo }) {
       <div className="combination-footer">
         <div className="combination-footer-text">
           <div className="bold-text">
-            Profit: {profit ? profit.toFixed(2) : "0.00"}
+          Profit: <span className="thin-text">{profit ? profit.toFixed(2) : "0.00"}</span>
           </div>
           {/* <div></div> */}
         </div>
