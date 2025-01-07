@@ -1,4 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"); */
+
+@import url("https://fonts.googleapis.com/css2?family=Gilroy:wght@400;500;600&display=swap");
 
 @font-face {
   font-family: "Gilroy";
@@ -173,6 +175,11 @@
 
 :root {
   --safe-area-inset-bottom: env(safe-area-inset-bottom);
+  --hover-bg-color: linear-gradient(
+    92.18deg,
+    rgba(255, 255, 255, 0.3) -25.84%,
+    rgba(132, 132, 132, 0.2) 128.51%
+  );
 }
 
 body {

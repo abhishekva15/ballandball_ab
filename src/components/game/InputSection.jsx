@@ -171,7 +171,8 @@ function InputSection({
           </span>
         </div>
         <input
-          type="tel"
+          type="text"
+          
           placeholder="Enter number"
           className="bet-input-modal"
           value={amount}

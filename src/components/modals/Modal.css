@@ -116,7 +116,7 @@
   cursor: pointer;
 }
 
-.close-icon-s:hover{
+.close-icon-s:hover {
   color: #fff;
 }
 
@@ -217,7 +217,7 @@
   /* display: none; */
   justify-content: center;
   /* align-items: center; */
-  padding-top: 1.5rem;
+  padding-top: 3.5rem;
   padding-bottom: 1.5rem;
   position: fixed;
   right: 0;
@@ -226,6 +226,16 @@
   bottom: 0;
   z-index: 20;
   overflow-y: auto;
+}
+
+@media (max-width: 767) {
+  .overlay {
+    padding-top: 0;
+  }
+
+  .modal-new-rules {
+    margin-top: 0;
+  }
 }
 
 .modal-new {
@@ -272,9 +282,8 @@
   cursor: pointer;
   z-index: 2;
   font-size: 18.5px;
-  
 }
-.close:hover{
+.close:hover {
   color: white;
 }
 
@@ -367,32 +376,29 @@
   animation: modal-new 0.5s ease-out forwards;
 }
 
-
 .modal-new-rules {
   width: 25rem;
   overflow-y: auto !important;
   padding: 0;
   /* height: 22rem; */
   animation: modal-new 0.5s ease-out forwards;
-  margin-top: 40px;
+  /* margin-top: 40px; */
 }
 .modal-new:active {
-    opacity: 1;
-    transform: scale(1);
+  opacity: 1;
+  transform: scale(1);
 }
 
 @keyframes modal-new {
-    0% {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
-
-
 
 .rules-para-1 {
   color: #fff;
@@ -451,14 +457,14 @@
 }
 
 .rules-content {
-  max-height: 0; 
+  max-height: 0;
   overflow: hidden;
   transition: max-height 0.5s ease-in-out;
   margin-left: 1.5rem;
 }
 
 .rules-content.open {
-  max-height: 500px; 
+  max-height: 500px;
 }
 
 /* .block-name{
@@ -480,8 +486,6 @@
 /* .rules-points{
   margin-left: 3rem
 } */
-
-
 
 .r-bottom {
   margin-bottom: 1rem;

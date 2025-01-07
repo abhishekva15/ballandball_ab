@@ -19,17 +19,15 @@ function MyBets({
   const handleMyBet = async () => {
     setApiLoading(true);
     const token = queryParams.id;
-    const res = await getCaller(`bet-history?token=${token}`);
+    const res = await getCaller(`bet-history?token=${token}&limit=20`);
     console.log(res);
     const newMyBet = res?.result || [];
     setMyBetData((prevData) => [...prevData, ...newMyBet]);
     setApiLoading(false);
   };
 
-  console.log("MyBetData", myBetData)
-
   useEffect(() => {
-    if (activeTab === 1 || resultData ) {
+    if (activeTab === 1 || resultData) {
       handleMyBet();
     }
   }, [activeTab, resultData]);
@@ -69,7 +67,7 @@ function MyBets({
                     {formateTime(singleBetData.created_at)}
                   </div>
                   <div className="g-mult g-center m-none">
-                    {singleBetData?.bet_amt}
+                    {singleBetData?.bet_amt.toFixed(2)}
                   </div>
                   <div className="g-mult g-center">
                     {singleBetData?.result.multiplier.toFixed(2)}x

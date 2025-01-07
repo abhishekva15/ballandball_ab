@@ -57,7 +57,8 @@ function RulesModal({ handleRules, setOpenRules }) {
       case 2:
         return (
           <>
-            <div className="rule-para r-bottom">{el.content.heading}</div>
+            <div className="rule-para ">{el.content.heading}</div>
+            <div className="rule-para r-bottom">{el.content.heading1}</div>
             <li className="rule-para">{el.content.p1}</li>
             <li className="rule-para">{el.content.p2}</li>
             <li className="rule-para">{el.content.p3}</li>

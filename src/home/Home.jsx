@@ -135,9 +135,9 @@ function Home() {
     socket.emit("SPIN", { betAmt: amount });
 
     socket.once("BET_RESULT", (data) => {
-      console.log(data)
+      console.log(data?.winCombo?.multiplier);
       setTimeout(() => {
-        if (sound ) {
+        if (sound  ) {
           playWinSound();
         }
         setWinCombo(true);

@@ -39,8 +39,8 @@ export const rulesData = [
     title: "Settings",
 
     content: {
-      heading:
-        "Click the gear icon in the top right corner of the screen to open the settings menu. In Settings you can:",
+      heading: `Click the gear icon in the top right corner of the screen to open the settings `,
+      heading1:"menu. In Settings you can:",
       p1: "сhange the nickname",
       p2: "view bet limits: Minimum bet, Maximum bet, Maximum Profit",
       p3: "turn on/off sounds",
@@ -65,5 +65,3 @@ export const rulesData = [
   },
   // Add more rules here as needed
 ];
-
-

@@ -16,10 +16,11 @@ function Header({ info, resultData, queryParams }) {
   const [openLimits, setOpenLimits] = useState(false);
   const [openRules, setOpenRules] = useState(false);
   const [payoutClass, setPayoutClass] = useState("");
-  const [payoutData, setPayoutData] = useState("");
+  const [payoutData, setPayoutData] = useState(0);
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
   
+  console.log(resultData)
 
   const handleClickOutside = (event) => {
     if (
@@ -77,7 +78,7 @@ function Header({ info, resultData, queryParams }) {
 
       setTimeout(() => {
         setPayoutClass("");
-        setPayoutData("");
+        setPayoutData(0);
       }, 1500);
     }
   }, [resultData]);
@@ -96,7 +97,7 @@ function Header({ info, resultData, queryParams }) {
           <div className="game-header-balance-text">{info?.bl}</div>
           <div className={`game-header-balance-delta ${payoutClass}`}>
             {payoutData === 0 ? "-" : "+"}
-            {payoutData}
+            {payoutData.toFixed(2)}
           </div>
         </div>
 
