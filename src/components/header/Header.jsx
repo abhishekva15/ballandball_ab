@@ -7,6 +7,10 @@ import Limits from "../modals/Limits";
 import RulesModal from "../modals/RulesModal";
 import { SoundContext } from "../../context/SoundContext";
 import { playSound, pauseSound } from "../../utility/gameSettings";
+import soundonsvg from '../../assets/Sound-1.svg'
+import soundoffsvg from '../../assets/Sound Close.svg'
+import { IoIosSettings } from "react-icons/io";
+
 
 import { Link } from "react-router-dom";
 
@@ -102,14 +106,14 @@ function Header({ info, resultData, queryParams }) {
         </div>
 
         <div className="game-header-buttons">
-          <div className="game-header-button">
-            <div className="game-header-btton-inner" onClick={toggleSound}>
-              {sound ? (
-                <MdOutlineVolumeUp style={{ height: "20px", width: "20px" }} />
-              ) : (
-                <MdOutlineVolumeOff style={{ height: "20px", width: "20px" }} />
-              )}
-            </div>
+        <div className="game-header-button">
+  <div className="game-header-btton-inner" onClick={toggleSound}>
+    {sound ? (
+      <img src={soundonsvg} alt="Sound On" style={{ height: "14px", width: "20px" }} />
+    ) : (
+      <img src={soundoffsvg} alt="Sound Off" style={{ height: "18px", width: "18px" }} />
+    )}
+  </div>
           </div>
           <div className="game-header-button">
             <div
@@ -117,7 +121,7 @@ function Header({ info, resultData, queryParams }) {
               onClick={handleSetting}
               ref={buttonRef}
             >
-              <IoMdSettings style={{ height: "20px", width: "20px" }} />
+              <IoIosSettings style={{ height: "20px", width: "21px" }} />
             </div>
             {settingModal && (
               <SettingModal
