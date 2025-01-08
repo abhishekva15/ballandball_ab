@@ -3,18 +3,25 @@ import React from "react";
 import { IoClose } from "react-icons/io5";
 import { formatDate, formateTime } from "../../utility/helper";
 
-function RoundDetails({ rondDetails, handleRoundDetails, singleBetData }) {
-
-
+function RoundDetails({
+  rondDetails,
+  handleRoundDetails,
+  singleBetData,
+  setRondDetails,
+}) {
+  const handleOutsideClick = (e) => {
+    if (e.target === e.currentTarget) {
+      setRondDetails(false);
+    }
+  };
   let firstReel, secondReel, thirdReel;
 
   if (singleBetData?.reels) {
-    
     firstReel = singleBetData?.reels[1] || [];
     secondReel = singleBetData?.reels[2] || [];
     thirdReel = singleBetData?.reels[3] || [];
   } else {
-    firstReel = secondReel = thirdReel = []; 
+    firstReel = secondReel = thirdReel = [];
   }
 
   const ballNames = [
@@ -31,10 +38,11 @@ function RoundDetails({ rondDetails, handleRoundDetails, singleBetData }) {
 
   const selectedBallNames = backendNumbers.map((num) => ballNames[num - 1]);
 
-
-
   return (
-    <div className={`round-overlay ${rondDetails ? "overlay-open" : ""}`}>
+    <div
+      className={`round-overlay ${rondDetails ? "overlay-open" : ""} `}
+      onClick={handleOutsideClick}
+    >
       <div
         className={`round-render ${rondDetails ? "modal-show" : "modal-close"}`}
       >

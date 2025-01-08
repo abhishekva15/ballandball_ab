@@ -19,10 +19,10 @@ function MyBets({
   const handleMyBet = async () => {
     setApiLoading(true);
     const token = queryParams.id;
-    const res = await getCaller(`bet-history?token=${token}&limit=20`);
+    const res = await getCaller(`bet-history?token=${token}&limit=10`);
     console.log(res);
     const newMyBet = res?.result || [];
-    setMyBetData((prevData) => [...prevData, ...newMyBet]);
+    setMyBetData(newMyBet);
     setApiLoading(false);
   };
 
@@ -82,6 +82,7 @@ function MyBets({
         </div>
       </div>
       <RoundDetails
+        setRondDetails={setRondDetails}
         singleBetData={singleBetData}
         rondDetails={rondDetails}
         handleRoundDetails={handleRoundDetails}
