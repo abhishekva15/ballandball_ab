@@ -26,7 +26,7 @@ function InputSection({
     } else if (Number(value) < 1.01) {
       setErrorInput("Minimum bet amount is 10.00");
       setErrorInputModal(true);
-    } else if (Number(value) > 1000) {
+    } else if (Number(value) > 20000) {
       setErrorInput("Maximum bet amount is 20000.00");
       setErrorInputModal(true);
     } else {

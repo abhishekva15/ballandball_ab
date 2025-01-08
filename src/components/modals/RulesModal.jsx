@@ -11,7 +11,7 @@ function RulesModal({ handleRules, setOpenRules }) {
   const handleOutsideClick = (e) => {
     if (e.target === e.currentTarget) {
       setOpenRules(false);
-    }
+    } 
   };
 
   const toggleAccordion = (index) => {
@@ -45,6 +45,7 @@ function RulesModal({ handleRules, setOpenRules }) {
             <h2 className="heading-rules">{el.content.heading3}</h2>
             <div className="rule-para ">{el.content.p10}</div>
             <div className="rule-para ">{el.content.p11}</div>
+            <div className="rule-para ">{el.content.p12}</div>
           </>
         );
       // case 2:

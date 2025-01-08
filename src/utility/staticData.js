@@ -24,8 +24,9 @@ export const rulesData = [
       p9: "All 5 balls are same type",
 
       heading3: "RTP",
-      p10: `Game relies on a coefficient called "RTP" (Return to Player) which is the statistical average of payouts over billions of rounds.`,
-      p11: "Ball & Ball has RTP 97.0%",
+      p10: `Game relies on a coefficient called "RTP" (Return to Player) which is the`,
+      p11:  `statistical average of payouts over billions of rounds.`,
+      p12: "Ball & Ball has RTP 97.0%",
     },
   },
   // {
