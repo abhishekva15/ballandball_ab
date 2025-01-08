@@ -7,9 +7,8 @@ import { createSocket } from "../utility/newSocket";
 import { playSpinSound, playWinSound } from "../utility/gameSettings";
 import eventEmitter from "../utility/eventEmiiter";
 import Loader from "../components/loader/Loader";
-import ErrorModal from "../components/error/ErrorModal"
+import ErrorModal from "../components/error/ErrorModal";
 import { SoundContext } from "../context/SoundContext";
-
 
 function Home() {
   const location = useLocation();
@@ -64,7 +63,6 @@ function Home() {
         setErrorModal(true);
       });
 
-      
       return () => {
         socketInstance.disconnect();
       };
@@ -85,24 +83,28 @@ function Home() {
 
   const handleBet = (data) => {
     try {
-      setAllBetData((oldata) => [...new Set([data, ...oldata])]);
+      setAllBetData((oldata) => {
+        const newData = [...new Set([data, ...oldata])];
+        return newData.slice(0, 10);
+      });
     } catch (err) {
       console.error(err);
     }
   };
 
- useEffect(() => {
-   let timer;
-   if (errorModal ) {
-     timer = setTimeout(() => {
-       setErrorModal(false);
-      
-     }, 2000);
-   }
-   return () => {
-     clearTimeout(timer);
-   };
- }, [errorModal]);
+  console.log("Single", allBetData);
+
+  useEffect(() => {
+    let timer;
+    if (errorModal) {
+      timer = setTimeout(() => {
+        setErrorModal(false);
+      }, 2000);
+    }
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [errorModal]);
 
   useEffect(() => {
     const handleReelComplete = (callback) => {
@@ -137,7 +139,7 @@ function Home() {
     socket.once("BET_RESULT", (data) => {
       console.log(data?.winCombo?.multiplier);
       setTimeout(() => {
-        if (sound  ) {
+        if (sound) {
           playWinSound();
         }
         setWinCombo(true);
@@ -150,6 +152,40 @@ function Home() {
       }, 1300);
     });
   };
+
+   useEffect(() => {
+     const adjustHeight = () => {
+       const userAgent = navigator.userAgent;
+       let headerHeight = 0;
+
+       // Check device type
+       if (/iPhone/i.test(userAgent)) {
+         headerHeight = 90; // iPhone header height
+       } else if (/Android/i.test(userAgent)) {
+         headerHeight = 45; // Android header height
+       } else {
+         headerHeight = 60; // Default header height for other devices
+       }
+
+       // Calculate usable height
+       const usableHeight = window.innerHeight - headerHeight;
+
+       // Set custom CSS variable
+       document.documentElement.style.setProperty(
+         "--viewport-height",
+         `${usableHeight}px`
+       );
+     };
+
+     // Initial adjustment
+     adjustHeight();
+
+     // Recalculate on resize
+     window.addEventListener("resize", adjustHeight);
+
+     // Cleanup
+     return () => window.removeEventListener("resize", adjustHeight);
+   }, []);
 
   console.log("ResltData", resultData);
 
