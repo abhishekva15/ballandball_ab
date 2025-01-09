@@ -383,7 +383,7 @@
   padding: 0;
   /* height: 22rem; */
   animation: modal-new 0.5s ease-out forwards;
-  /* margin-top: 40px; */
+  margin-top: 40px;
 }
 .modal-new:active {
   opacity: 1;

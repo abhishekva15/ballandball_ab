@@ -23,7 +23,7 @@ function Limits({ handleLimits, setOpenLimits }) {
           <div onClick={handleLimits}>
             <IoCloseSharp
               className="close"
-              style={{ fontSize: "18px", fontWeight: "bolder" }}
+              style={{ fontSize: "18px", fontWeight: "bolder", strokeWidth:"5px" }}
             />
           </div>
         </div>
