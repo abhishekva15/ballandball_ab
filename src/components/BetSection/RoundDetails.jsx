@@ -50,7 +50,7 @@ function RoundDetails({
           <div className="start-modal-head">
             <div className="game-start-logo"></div>
             <div className="header_id">
-              4266a75f-3ed4-479...
+              {/* 4266a75f-3ed4-479... */}
               {/* <PiCopySimpleFill /> */}
             </div>
             <div className="close-icon" onClick={handleRoundDetails}>
@@ -78,7 +78,7 @@ function RoundDetails({
               <div className="start-modal-col-flat">
                 <div className="start-modal-col-lable">Bet Amount</div>
                 <div className="start-modal-col-value">
-                  {singleBetData?.bet_amt}
+                  {singleBetData?.bet_amt?.toFixed(2)}
                 </div>
               </div>
             </div>
@@ -94,7 +94,7 @@ function RoundDetails({
               <div className="start-modal-col-flat">
                 <div className="start-modal-col-lable">Payout</div>
                 <div className="start-modal-col-value">
-                  {singleBetData?.won_amt}
+                  {singleBetData?.won_amt?.toFixed(2)}
                 </div>
               </div>
             </div>

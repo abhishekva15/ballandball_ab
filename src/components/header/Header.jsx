@@ -92,7 +92,8 @@ function Header({ info, resultData, queryParams }) {
       <div className="game-header">
         <div className="game-header-back">
           <Link to={`https://lobby.unicon.vip/?id=${queryParams.id}`}>
-            <IoIosArrowBack style={{ color: "#fff", fontWeight: "bold" }} />
+          <IoIosArrowBack style={{ color: "#fff", fontSize: "19px", strokeWidth: "15px", marginTop:"2px" }} />
+
           </Link>
         </div>
         <div className="game-header-logo"></div>
@@ -121,7 +122,7 @@ function Header({ info, resultData, queryParams }) {
               onClick={handleSetting}
               ref={buttonRef}
             >
-              <IoIosSettings style={{ height: "20px", width: "21px" }} />
+              <IoIosSettings style={{ height: "22px", width: "22px" }} />
             </div>
             {settingModal && (
               <SettingModal
