@@ -172,7 +172,7 @@ function InputSection({
         </div>
         <input
           type="text"
-          
+          inputMode="numeric"
           placeholder="Enter number"
           className="bet-input-modal"
           value={amount}

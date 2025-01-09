@@ -110,7 +110,7 @@ function Header({ info, resultData, queryParams }) {
         <div className="game-header-button">
   <div className="game-header-btton-inner" onClick={toggleSound}>
     {sound ? (
-      <img src={soundonsvg} alt="Sound On" style={{ height: "14px", width: "20px" }} />
+      <img src={soundonsvg} alt="Sound On" style={{ height: "15px", width: "20px" }} />
     ) : (
       <img src={soundoffsvg} alt="Sound Off" style={{ height: "18px", width: "18px" }} />
     )}
