@@ -153,97 +153,95 @@
   overflow-y: auto;
 }
 
-
 @keyframes row-odd {
-    0% {
-        transform: translate(0px, -100%);
-    }
+  0% {
+    transform: translate(0px, -100%);
+  }
 }
 @-webkit-keyframes row-odd {
-    0% {
-        transform: translate(0px, -100%);
-    }
+  0% {
+    transform: translate(0px, -100%);
+  }
 }
 @-moz-keyframes row-odd {
-    0% {
-        transform: translate(0px, -100%);
-    }
+  0% {
+    transform: translate(0px, -100%);
+  }
 }
 @-o-keyframes row-odd {
-    0% {
-        transform: translate(0px, -100%);
-    }
+  0% {
+    transform: translate(0px, -100%);
+  }
 }
 /* //Row even */
 @keyframes row-even {
-    0% {
-        transform: translateY(-100%);
-    }
+  0% {
+    transform: translateY(-100%);
+  }
 }
 @-webkit-keyframes row-even {
-    0% {
-        transform: translateY(-100%);
-    }
+  0% {
+    transform: translateY(-100%);
+  }
 }
 @-moz-keyframes row-even {
-    0% {
-        transform: translateY(-100%);
-    }
+  0% {
+    transform: translateY(-100%);
+  }
 }
 @-o-keyframes row-even {
-    0% {
-        transform: translateY(-100%);
-    }
+  0% {
+    transform: translateY(-100%);
+  }
 }
 /* //Row last */
 @keyframes row-last {
-    0% {
-        opacity: 1;
-        transform: translateY(-100%);
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(0);
-    }
+  0% {
+    opacity: 1;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
 }
 @-webkit-keyframes row-last {
-    0% {
-        opacity: 1;
-        transform: translateY(-100%);
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(0);
-    }
+  0% {
+    opacity: 1;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
 }
 @-moz-keyframes row-last {
-    0% {
-        opacity: 1;
-        transform: translateY(-100%);
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(0);
-    }
+  0% {
+    opacity: 1;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
 }
 @-o-keyframes row-last {
-    0% {
-        opacity: 1;
-        transform: translateY(-10%);
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(0);
-    }
+  0% {
+    opacity: 1;
+    transform: translateY(-10%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
 }
-
 
 .bet-row {
   align-items: center;
   cursor: pointer;
   display: flex;
   opacity: 0.6;
-  -webkit-animation-duration: .5s;
+  -webkit-animation-duration: 0.5s;
   animation-duration: 0.5s;
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
@@ -255,12 +253,10 @@
   transform-style: preserve-3d;
 }
 
-
-.bet-row:last-child{
-    -webkit-animation-name: row-odd;
-    animation-name: row-odd;
+.bet-row:last-child {
+  -webkit-animation-name: row-odd;
+  animation-name: row-odd;
 }
-
 
 .bet-row:hover {
   opacity: 1;
@@ -539,7 +535,7 @@
   width: 50px;
 }
 
-.b-baseball{
+.b-baseball {
   background-image: url(../../assets/baseball.png);
 }
 
@@ -625,4 +621,3 @@
     display: none;
   }
 }
-

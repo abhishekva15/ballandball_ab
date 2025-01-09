@@ -1,9 +1,9 @@
-import React,{useState} from 'react'
-import { rulesData } from '../../utility/staticData';
+import React, { useState } from "react";
+import { rulesData } from "../../utility/staticData";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 import { IoCloseSharp } from "react-icons/io5";
-import '../modals/Modal.css'
+import "../modals/Modal.css";
 
 function RulesModal({ handleRules, setOpenRules }) {
   const [openIndex, setOpenIndex] = useState(null);
@@ -11,7 +11,7 @@ function RulesModal({ handleRules, setOpenRules }) {
   const handleOutsideClick = (e) => {
     if (e.target === e.currentTarget) {
       setOpenRules(false);
-    } 
+    }
   };
 
   const toggleAccordion = (index) => {
@@ -120,7 +120,7 @@ function RulesModal({ handleRules, setOpenRules }) {
                 style={{
                   maxHeight: openIndex === i ? "" : "0",
                   overflow: "hidden",
-                  transition: "max-height 0.5s ease-in-out",
+                  transition: "max-height 0.9s ease-in-out",
                 }}
               >
                 <ul className="rules-points">{renderContent(el, i)}</ul>
@@ -133,4 +133,4 @@ function RulesModal({ handleRules, setOpenRules }) {
   );
 }
 
-export default RulesModal
+export default RulesModal;

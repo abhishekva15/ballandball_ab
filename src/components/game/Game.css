@@ -52,13 +52,6 @@
   );
 }
 
-.combination-list-item:hover {
-  background: linear-gradient(
-    92.18deg,
-    rgba(255, 255, 255, 0.3) -25.84%,
-    rgba(132, 132, 132, 0.2) 128.51%
-  );
-}
 
 .combination-list-item_77 {
   background: linear-gradient(92.18deg, #fd9c41 -25.84%, #ffe481 128.51%);

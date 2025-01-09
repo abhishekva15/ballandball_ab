@@ -213,7 +213,13 @@ html body {
   right: 0;
   scrollbar-width: none;
   top: 0;
-  height: var(--viewport-height, 100vh);
+  
+}
+
+@media (max-width:767px){
+  .app{
+    height: var(--viewport-height, 100vh);
+  }
 }
 
 .game-wrapper {

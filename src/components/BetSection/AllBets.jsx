@@ -3,10 +3,7 @@ import React from "react";
 import { formateTime } from "../../utility/helper";
 
 function AllBets({ allBetData }) {
-
-  
  
-
   return (
     <>
       <div className="bet-content">

@@ -37,6 +37,8 @@ function MyBets({
     setSingleBetData(item);
   };
 
+  console.log(singleBetData)
+
   return (
     <>
       <div className="bet-content">
