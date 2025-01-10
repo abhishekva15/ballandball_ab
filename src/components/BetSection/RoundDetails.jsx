@@ -59,11 +59,11 @@ function RoundDetails({
           </div>
 
           <div className="start-modal-row">
-            <div className="start-title">Player ID:</div>
+            <div className="start-title">Match ID:</div>
             <div className="start-text">{singleBetData?.match_id}</div>
           </div>
           <div className="start-modal-row">
-            <div className="start-title">Nickname:</div>
+            <div className="start-title">User ID:</div>
             <div className="start-text">{singleBetData?.player_id}</div>
           </div>
           <div className="start-modal-row">

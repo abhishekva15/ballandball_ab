@@ -106,21 +106,21 @@ function Home() {
     };
   }, [errorModal]);
 
-  useEffect(() => {
-    const handleReelComplete = (callback) => {
-      const reelCompleted = callback();
+  // useEffect(() => {
+  //   const handleReelComplete = (callback) => {
+  //     const reelCompleted = callback();
 
-      if (reelCompleted) {
-        setIsBetting(false);
-      }
-    };
+  //     if (reelCompleted) {
+  //       setIsBetting(false);
+  //     }
+  //   };
 
-    eventEmitter.on("reelComplete", handleReelComplete);
+  //   eventEmitter.on("reelComplete", handleReelComplete);
 
-    return () => {
-      eventEmitter.off("reelComplete", handleReelComplete);
-    };
-  }, []);
+  //   return () => {
+  //     eventEmitter.off("reelComplete", handleReelComplete);
+  //   };
+  // }, []);
 
   const handlePlacebet = () => {
     // Check if the bet amount is valid
@@ -144,12 +144,13 @@ function Home() {
         }
         setWinCombo(true);
         handleResultData(data);
-      }, 1300);
+        setIsBetting(false);
+      }, 2300);
     });
     socket.on("ALL_BETS", (data) => {
       setTimeout(() => {
         handleBet(data);
-      }, 1300);
+      }, 2300);
     });
   };
 
