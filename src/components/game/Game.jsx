@@ -26,6 +26,7 @@ function Game({
   const [showTooltip, setShowTooltip] = useState(false);
   const [spin, setSpin] = useState(false);
   const { sound } = useContext(SoundContext);
+ 
 
   useEffect(() => {
     if (Number(amount) === MAX_AMOUNT) {
@@ -53,6 +54,8 @@ function Game({
       playButtonSound();
     }
   };
+
+
 
   return (
     <div className="game-container">

@@ -20,7 +20,7 @@ function MyBets({
     setApiLoading(true);
     const token = queryParams.id;
     const res = await getCaller(`bet-history?token=${token}&limit=10`);
-    console.log(res);
+    // console.log(res);
     const newMyBet = res?.result || [];
     setMyBetData(newMyBet);
     setApiLoading(false);
@@ -37,7 +37,7 @@ function MyBets({
     setSingleBetData(item);
   };
 
-  console.log(singleBetData)
+  // console.log(singleBetData)
 
   return (
     <>

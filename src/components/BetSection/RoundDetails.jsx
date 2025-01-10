@@ -17,21 +17,21 @@ function RoundDetails({
   let firstReel, secondReel, thirdReel;
 
   if (singleBetData?.reels) {
-    firstReel = singleBetData?.reels[1] || [];
-    secondReel = singleBetData?.reels[2] || [];
-    thirdReel = singleBetData?.reels[3] || [];
+    firstReel = singleBetData?.reels[0] || [];
+    secondReel = singleBetData?.reels[1] || [];
+    thirdReel = singleBetData?.reels[2] || [];
   } else {
     firstReel = secondReel = thirdReel = [];
   }
 
   const ballNames = [
-    "b-baseball",
-    "b-basketball",
     "b-bowling",
+    "b-basketball",
     "b-football",
     "b-pool",
     "b-tennis",
     "b-volleyball",
+    "b-baseball",
   ];
 
   const backendNumbers = [1, 2, 3, 4, 5, 6, 7];

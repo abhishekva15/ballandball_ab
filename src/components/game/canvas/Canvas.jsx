@@ -25,7 +25,13 @@ import "./canvas.css";
 //   return !!match;
 // }
 function Canvas(socket) {
-  console.log("re render");
+  
+ 
+  console.log(`re render `);
+  
+ 
+  
+
   // console.log(socket)
   const [mobile, setMobile] = useState(false);
   const [started, setStarted] = useState(false);
@@ -71,6 +77,7 @@ function Canvas(socket) {
     containerRef.current = document.getElementById("canvas-container");
 
     if (!containerRef.current) return;
+    
 
     appRef.current = new PixiApp({
       w: containerRef.current.offsetWidth,

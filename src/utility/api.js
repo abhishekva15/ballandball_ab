@@ -21,8 +21,8 @@
 // getCaller()
 
 export const getCaller = async (url, token) => {
-  console.log(url, "Response");
-  console.log(process.env.REACT_APP_BASE_URL);
+  // console.log(url, "Response");
+  // console.log(process.env.REACT_APP_BASE_URL);
 
   try {
     const response = await fetch(`${process.env.REACT_APP_BASE_URL}/${url}`, {

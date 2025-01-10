@@ -92,7 +92,7 @@ function Home() {
     }
   };
 
-  console.log("Single", allBetData);
+  // console.log("Single", allBetData);
 
   useEffect(() => {
     let timer;
@@ -137,7 +137,7 @@ function Home() {
     socket.emit("SPIN", { betAmt: amount });
 
     socket.once("BET_RESULT", (data) => {
-      console.log(data?.winCombo?.multiplier);
+      // console.log(data?.winCombo?.multiplier);
       setTimeout(() => {
         if (sound) {
           playWinSound();
@@ -188,7 +188,7 @@ function Home() {
      return () => window.removeEventListener("resize", adjustHeight);
    }, []);
 
-  console.log("ResltData", resultData);
+  // console.log("ResltData", resultData);
 
   if (!socketConnected) {
     return <Loader message={"Connecting..."} />;

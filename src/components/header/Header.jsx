@@ -24,7 +24,7 @@ function Header({ info, resultData, queryParams }) {
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
   
-  console.log(resultData)
+  // console.log(resultData)
 
   const handleClickOutside = (event) => {
     if (

@@ -3,6 +3,7 @@ import "../game/Game.css";
 import Canvas from "./canvas/Canvas";
 
 function BallSlot({ spin, setSpin, resultData, socket }) {
+  
   return (
     <div className="chart">
       <div className="chart-inner">
