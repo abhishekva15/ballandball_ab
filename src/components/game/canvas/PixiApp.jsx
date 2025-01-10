@@ -107,7 +107,6 @@ export default class PixiApp {
   symbolSize;
   symbolGap;
   symbolContainerHeight;
-
   reelWidth;
   symbolPositionHeight;
   app;

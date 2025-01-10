@@ -154,39 +154,39 @@ function Home() {
     });
   };
 
-   useEffect(() => {
-     const adjustHeight = () => {
-       const userAgent = navigator.userAgent;
-       let headerHeight = 0;
+  useEffect(() => {
+    const adjustHeight = () => {
+      const userAgent = navigator.userAgent;
+      let headerHeight = 0;
 
-       // Check device type
-       if (/iPhone/i.test(userAgent)) {
-         headerHeight = 90; // iPhone header height
-       } else if (/Android/i.test(userAgent)) {
-         headerHeight = 45; // Android header height
-       } else {
-         headerHeight = 60; // Default header height for other devices
-       }
+      // Check device type
+      if (/iPhone/i.test(userAgent)) {
+        headerHeight = 90; // iPhone header height
+      } else if (/Android/i.test(userAgent)) {
+        headerHeight = 45; // Android header height
+      } else {
+        headerHeight = 60; // Default header height for other devices
+      }
 
-       // Calculate usable height
-       const usableHeight = window.innerHeight - headerHeight;
+      // Calculate usable height
+      const usableHeight = window.innerHeight - headerHeight;
 
-       // Set custom CSS variable
-       document.documentElement.style.setProperty(
-         "--viewport-height",
-         `${usableHeight}px`
-       );
-     };
+      // Set custom CSS variable
+      document.documentElement.style.setProperty(
+        "--viewport-height",
+        `${usableHeight}px`
+      );
+    };
 
-     // Initial adjustment
-     adjustHeight();
+    // Initial adjustment
+    adjustHeight();
 
-     // Recalculate on resize
-     window.addEventListener("resize", adjustHeight);
+    // Recalculate on resize
+    window.addEventListener("resize", adjustHeight);
 
-     // Cleanup
-     return () => window.removeEventListener("resize", adjustHeight);
-   }, []);
+    // Cleanup
+    return () => window.removeEventListener("resize", adjustHeight);
+  }, []);
 
   // console.log("ResltData", resultData);
 

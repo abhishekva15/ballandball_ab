@@ -7,10 +7,10 @@ import Limits from "../modals/Limits";
 import RulesModal from "../modals/RulesModal";
 import { SoundContext } from "../../context/SoundContext";
 import { playSound, pauseSound } from "../../utility/gameSettings";
-import soundonsvg from '../../assets/Sound-1.svg'
-import soundoffsvg from '../../assets/Sound Close.svg'
+import soundonsvg from "../../assets/Sound-1.svg";
+import soundoffsvg from "../../assets/Sound Close.svg";
 import { IoIosSettings } from "react-icons/io";
-
+import settingsvg from "../../assets/setting.svg";
 
 import { Link } from "react-router-dom";
 
@@ -23,8 +23,7 @@ function Header({ info, resultData, queryParams }) {
   const [payoutData, setPayoutData] = useState(0);
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
-  
-  // console.log(resultData)
+
 
   const handleClickOutside = (event) => {
     if (
@@ -92,8 +91,14 @@ function Header({ info, resultData, queryParams }) {
       <div className="game-header">
         <div className="game-header-back">
           <Link to={`https://lobby.unicon.vip/?id=${queryParams.id}`}>
-          <IoIosArrowBack style={{ color: "#fff", fontSize: "19px", strokeWidth: "15px", marginTop:"2px" }} />
-
+            <IoIosArrowBack
+              style={{
+                color: "#fff",
+                fontSize: "19px",
+                strokeWidth: "15px",
+                marginTop: "2px",
+              }}
+            />
           </Link>
         </div>
         <div className="game-header-logo"></div>
@@ -107,14 +112,22 @@ function Header({ info, resultData, queryParams }) {
         </div>
 
         <div className="game-header-buttons">
-        <div className="game-header-button">
-  <div className="game-header-btton-inner" onClick={toggleSound}>
-    {sound ? (
-      <img src={soundonsvg} alt="Sound On" style={{ height: "14px", width: "20px" }} />
-    ) : (
-      <img src={soundoffsvg} alt="Sound Off" style={{ height: "18px", width: "18px" }} />
-    )}
-  </div>
+          <div className="game-header-button">
+            <div className="game-header-btton-inner" onClick={toggleSound}>
+              {sound ? (
+                <img
+                  src={soundonsvg}
+                  alt="Sound On"
+                  style={{ height: "15px", width: "20px" }}
+                />
+              ) : (
+                <img
+                  src={soundoffsvg}
+                  alt="Sound Off"
+                  style={{ height: "18px", width: "18px" }}
+                />
+              )}
+            </div>
           </div>
           <div className="game-header-button">
             <div
@@ -122,7 +135,11 @@ function Header({ info, resultData, queryParams }) {
               onClick={handleSetting}
               ref={buttonRef}
             >
-              <IoIosSettings style={{ height: "22px", width: "22px" }} />
+              <img
+                src={settingsvg}
+                alt="settings"
+                style={{ height: "17px", width: "17px" }}
+              />
             </div>
             {settingModal && (
               <SettingModal

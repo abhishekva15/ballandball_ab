@@ -167,12 +167,12 @@ function InputSection({
         <div className="inpute-name-text">
           Bet Amount
           <span className={`tooltips-box ${showTooltip ? "_show" : ""}`}>
-            i<span className="toltips-hint">Max Profit 200000.00</span>
+            i<span className="toltips-hint">Max Profit 2,00,000.00</span>
           </span>
         </div>
         <input
           type="text"
-          
+          inputMode="numeric"
           placeholder="Enter number"
           className="bet-input-modal"
           value={amount}
