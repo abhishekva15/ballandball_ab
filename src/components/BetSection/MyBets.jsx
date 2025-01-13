@@ -44,9 +44,9 @@ function MyBets({
       <div className="bet-content">
         <div className="tab-container">
           <div className="bet-titles">
-            <div className="single-title">Game</div>
-            <div className="single-title m-center m-none">Time</div>
-            <div className="single-title m-center m-none">Bet Amount</div>
+            <div className="single-title m-none">Game</div>
+            <div className="single-title m-center ">Time</div>
+            <div className="single-title m-center ">Bet Amount</div>
             <div className="single-title m-center">Multiplier</div>
             <div className="single-title p-right">Payout</div>
           </div>
@@ -61,14 +61,14 @@ function MyBets({
                   className="bet-row"
                   onClick={() => handleRoundDetails(singleBetData)}
                 >
-                  <div className="g-data">
+                  <div className="g-data m-none">
                     <div className="icon-ball"></div>
                     Ball & Ball
                   </div>
-                  <div className="g-mult g-center m-none">
+                  <div className="g-mult g-center ">
                     {formateTime(singleBetData.created_at)}
                   </div>
-                  <div className="g-mult g-center m-none">
+                  <div className="g-mult g-center ">
                     {singleBetData?.bet_amt.toFixed(2)}
                   </div>
                   <div className="g-mult g-center">

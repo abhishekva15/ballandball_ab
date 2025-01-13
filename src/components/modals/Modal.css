@@ -74,6 +74,7 @@
     right: 0;
     top: 0;
     z-index: 20;
+    height: var(--viewport-height, 100vh);
   }
 }
 
@@ -232,6 +233,7 @@
 @media (max-width: 767) {
   .overlay {
     padding-top: 0;
+    
   }
 
   .modal-new-rules {
@@ -357,6 +359,7 @@
   bottom: 0;
   z-index: 20;
   overflow-y: auto;
+  height: var(--viewport-height, 100vh);
 }
 
 .modal-new {
@@ -483,7 +486,7 @@
 }
 
 .rules-points li {
-  margin-left: 1rem;
+  margin-left: 0.5rem;
 }
 
 /* .rules-points{
@@ -502,6 +505,7 @@
 
   .overlay {
     align-items: center;
+    height: var(--viewport-height, 100vh);
   }
 }
 
