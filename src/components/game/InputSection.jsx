@@ -122,7 +122,7 @@ function InputSection({
           disabled={disableMin || isBetting}
           onClick={handleMin}
         >
-          min
+          Min
         </button>
       </div>
       <div className="inpute-button-sm">
@@ -155,7 +155,7 @@ function InputSection({
           disabled={disableMax || isBetting}
           onClick={handleMax}
         >
-          max
+          Max
         </button>
       </div>
 
@@ -165,9 +165,9 @@ function InputSection({
         }`}
       >
         <div className="inpute-name-text">
-          Bet Amount
+          Enter Bet Amount
           <span className={`tooltips-box ${showTooltip ? "_show" : ""}`}>
-            i<span className="toltips-hint">Max Profit 200,000.00</span>
+            i<span className="toltips-hint">maximum win for one round 200,000.00</span>
           </span>
         </div>
         <input
