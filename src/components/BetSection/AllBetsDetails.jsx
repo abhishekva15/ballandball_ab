@@ -77,7 +77,7 @@ function AllBetsDetails({
               <div className="start-modal-col-flat">
                 <div className="start-modal-col-lable">Bet Amount</div>
                 <div className="start-modal-col-value">
-                  {singleBetData?.betAmt}
+                  {singleBetData?.betAmt?.toFixed(2)}
                 </div>
               </div>
             </div>

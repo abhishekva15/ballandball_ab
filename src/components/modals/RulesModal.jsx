@@ -41,11 +41,12 @@ function RulesModal({ handleRules, setOpenRules }) {
             <li className="rule-para">{el.content.p6}</li>
             <li className="rule-para">{el.content.p7}</li>
             <li className="rule-para">{el.content.p8}</li>
-            <li className="rule-para r-bottom">{el.content.p9}</li>
+            <div className="rule-para all">{el.content.p9}</div>
+            <li className="rule-para r-bottom">{el.content.p10}</li>
             <h2 className="heading-rules">{el.content.heading3}</h2>
-            <div className="rule-para ">{el.content.p10}</div>
             <div className="rule-para ">{el.content.p11}</div>
             <div className="rule-para ">{el.content.p12}</div>
+            <div className="rule-para ">{el.content.p13}</div>
           </>
         );
       // case 2:
@@ -60,7 +61,7 @@ function RulesModal({ handleRules, setOpenRules }) {
           <>
             <div className="rule-para ">{el.content.heading}</div>
             <div className="rule-para r-bottom">{el.content.heading1}</div>
-            <li className="rule-para">{el.content.p1}</li>
+            
             <li className="rule-para">{el.content.p2}</li>
             <li className="rule-para">{el.content.p3}</li>
           </>
