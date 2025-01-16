@@ -4,7 +4,7 @@ import AllBets from "./AllBets";
 import MyBets from "./MyBets";
 // import { betData } from "../../utility/betSataticData";
 
-function BetSection({ setLoading, resultData, queryParams, allBetData }) {
+function BetSection({  resultData, queryParams, allBetData }) {
   const [activeTab, setActiveTab] = useState(0);
   // const [allBetData, setAllBetData] = useState(betData);
 
@@ -53,9 +53,9 @@ function BetSection({ setLoading, resultData, queryParams, allBetData }) {
         <MyBets
           resultData={resultData}
           activeTab={activeTab}
-          allBetData={allBetData}
+          
           queryParams={queryParams}
-          setLoading={setLoading}
+          
         ></MyBets>
       )}
     </>

@@ -2,7 +2,7 @@ import React from "react";
 import "../game/Game.css";
 import Canvas from "./canvas/Canvas";
 
-function BallSlot({ spin, setSpin, resultData, socket }) {
+function BallSlot({ socket, ballResult }) {
   return (
     <div className="chart">
       <div className="chart-inner">
@@ -14,7 +14,7 @@ function BallSlot({ spin, setSpin, resultData, socket }) {
           <div className="divider"></div>
         </div>
         <div className="canvas-container" id="canvas-container" />
-        <Canvas socket={socket} />
+        <Canvas socket={socket} ballResult={ballResult} />
       </div>
     </div>
   );

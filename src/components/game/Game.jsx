@@ -18,14 +18,14 @@ function Game({
   isBetting,
   socket,
   winCombo,
- 
+
   // resultData,
 }) {
   const MIN_AMOUNT = 10;
   const MAX_AMOUNT = Math.min(info?.bl, 20000.0);
   const tooltipTimeout = useRef(null);
   const [showTooltip, setShowTooltip] = useState(false);
-  const [spin, setSpin] = useState(false);
+
   const { sound } = useContext(SoundContext);
 
   useEffect(() => {
@@ -65,21 +65,11 @@ function Game({
       ></Combination>
 
       {/* Ball slot */}
-      <BallSlot
-        spin={spin}
-        setSpin={setSpin}
-        resultData={resultData}
-        socket={socket}
-        
-      ></BallSlot>
+      <BallSlot resultData={resultData} socket={socket}></BallSlot>
 
       {/* BetButton and InputSection */}
       <div className={`game-betslip ${isBetting ? "bet-game-betslip" : ""}`}>
-        <BetButton
-          handlePlacebet={handlePlacebet}
-          spin={spin}
-          setSpin={setSpin}
-        ></BetButton>
+        <BetButton handlePlacebet={handlePlacebet}></BetButton>
         <InputSection
           isBetting={isBetting}
           amount={amount}

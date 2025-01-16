@@ -5,8 +5,7 @@ import RoundDetails from "./RoundDetails";
 import ApiLoader from "../loader/ApiLoader";
 
 function MyBets({
-  allBetData,
-  setLoading,
+  
   queryParams,
   activeTab,
   resultData,

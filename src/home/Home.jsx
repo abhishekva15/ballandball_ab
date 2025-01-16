@@ -18,17 +18,19 @@ function Home() {
   const [socket, setSocket] = useState(null);
   const [info, setInfo] = useState({});
   const [socketConnected, setSocketConnected] = useState(false);
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
   const [showBalance, setShowBalance] = useState(false);
   const [ballResult, setBallResult] = useState({});
   const [isBetting, setIsBetting] = useState(false);
   const [resultData, setResultData] = useState({});
-  const [historyData, setHistoryData] = useState([]);
+  // const [historyData, setHistoryData] = useState([]);
   const [allBetData, setAllBetData] = useState([]);
   const [error, setError] = useState("");
   const [errorModal, setErrorModal] = useState(false);
   const [winCombo, setWinCombo] = useState(false);
   const { sound } = useContext(SoundContext);
+
+  
 
   let queryParams = {};
   try {
@@ -81,10 +83,10 @@ function Home() {
   const handleResultData = (data) => {
     try {
       setResultData(data);
-      setTimeout(
-        () => setHistoryData((oldata) => [...new Set([...oldata, data])]),
-        600
-      );
+      // setTimeout(
+      //   () => setHistoryData((oldata) => [...new Set([...oldata, data])]),
+      //   600
+      // );
     } catch (err) {
       console.error(err);
     }
@@ -143,7 +145,7 @@ function Home() {
     }
     setWinCombo(false);
 
-    socket.emit("SPIN", { betAmt: parseFloat(amount)});
+    socket.emit("SPIN", { betAmt: parseFloat(amount) });
 
     socket.once("BET_RESULT", (data) => {
       // console.log(data?.winCombo?.multiplier);
@@ -156,7 +158,7 @@ function Home() {
         setIsBetting(false);
       }, 2300);
     });
-    socket.on("ALL_BETS", (data) => {
+    socket.once("ALL_BETS", (data) => {
       setTimeout(() => {
         handleBet(data);
       }, 2300);
@@ -231,7 +233,6 @@ function Home() {
             <BetSection
               allBetData={allBetData}
               resultData={resultData}
-              setLoading={setLoading}
               queryParams={queryParams}
             ></BetSection>
           </div>

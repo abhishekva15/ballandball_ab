@@ -2,7 +2,7 @@ import React from "react";
 import "../game/Game.css";
 
 
-function BetButton({ handlePlacebet, isBetting, spin, setSpin, socket }) {
+function BetButton({ handlePlacebet, isBetting }) {
   return (
     <div
       className={`game-betslip-button ${isBetting ? "all-default" : ""}`}
