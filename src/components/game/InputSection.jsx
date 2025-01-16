@@ -165,15 +165,15 @@ function InputSection({
         }`}
       >
         <div className="inpute-name-text">
-          Enter Bet Amount
+          Bet Amount
           <span className={`tooltips-box ${showTooltip ? "_show" : ""}`}>
-            i<span className="toltips-hint">maximum win for one round 200,000.00</span>
+            i<span className="toltips-hint">Maximum Win for One Round 200,000.00</span>
           </span>
         </div>
-        <input
+        <input 
           type="text"
           inputMode="numeric"
-          placeholder="Enter number"
+          placeholder="Enter Bet Amount "
           className="bet-input-modal"
           value={amount}
           onKeyDown={(e) =>

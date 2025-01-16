@@ -20,6 +20,7 @@ function Home() {
   const [socketConnected, setSocketConnected] = useState(false);
   const [loading, setLoading] = useState(true);
   const [showBalance, setShowBalance] = useState(false);
+  const [ballResult, setBallResult] = useState({});
   const [isBetting, setIsBetting] = useState(false);
   const [resultData, setResultData] = useState({});
   const [historyData, setHistoryData] = useState([]);
@@ -58,6 +59,14 @@ function Home() {
         setInfo(data);
       });
 
+      socketInstance.on("BET_RESULT", (data) => {
+        try {
+          setBallResult(data);
+        } catch (error) {
+          console.error("Error handling BET_RESULT:", error);
+        }
+      });
+
       socketInstance.on("ERROR", (data) => {
         setError(data);
         setErrorModal(true);
@@ -92,7 +101,7 @@ function Home() {
     }
   };
 
-  console.log("Single", allBetData);
+  // console.log("Single", allBetData);
 
   useEffect(() => {
     let timer;
@@ -134,10 +143,10 @@ function Home() {
     }
     setWinCombo(false);
 
-    socket.emit("SPIN", { betAmt: amount });
+    socket.emit("SPIN", { betAmt: parseFloat(amount)});
 
     socket.once("BET_RESULT", (data) => {
-      console.log(data?.winCombo?.multiplier);
+      // console.log(data?.winCombo?.multiplier);
       setTimeout(() => {
         if (sound) {
           playWinSound();
@@ -154,41 +163,44 @@ function Home() {
     });
   };
 
-   useEffect(() => {
-     const adjustHeight = () => {
-       const userAgent = navigator.userAgent;
-       let headerHeight = 0;
+  useEffect(() => {
+    const adjustHeight = () => {
+      const userAgent = navigator.userAgent;
+      const isLandscape = window.innerWidth > window.innerHeight;
+      let headerHeight = 0;
 
-       // Check device type
-       if (/iPhone/i.test(userAgent)) {
-         headerHeight = 90; // iPhone header height
-       } else if (/Android/i.test(userAgent)) {
-         headerHeight = 45; // Android header height
-       } else {
-         headerHeight = 60; // Default header height for other devices
-       }
+      if (isLandscape) {
+        document.documentElement.style.setProperty(
+          "--viewport-height",
+          `${window.innerHeight}px`
+        );
+        return;
+      }
 
-       // Calculate usable height
-       const usableHeight = window.innerHeight - headerHeight;
+      if (/iPhone/i.test(userAgent)) {
+        headerHeight = 90; // iPhone header height
+      } else if (/Android/i.test(userAgent)) {
+        headerHeight = 45; // Android header height
+      } else {
+        headerHeight = 60; // Default header height for other devices
+      }
 
-       // Set custom CSS variable
-       document.documentElement.style.setProperty(
-         "--viewport-height",
-         `${usableHeight}px`
-       );
-     };
+      const usableHeight = window.innerHeight - headerHeight;
 
-     // Initial adjustment
-     adjustHeight();
+      document.documentElement.style.setProperty(
+        "--viewport-height",
+        `${usableHeight}px`
+      );
+    };
 
-     // Recalculate on resize
-     window.addEventListener("resize", adjustHeight);
+    adjustHeight();
 
-     // Cleanup
-     return () => window.removeEventListener("resize", adjustHeight);
-   }, []);
+    window.addEventListener("resize", adjustHeight);
 
-  console.log("ResltData", resultData);
+    return () => window.removeEventListener("resize", adjustHeight);
+  }, []);
+
+  // console.log("ResltData", resultData);
 
   if (!socketConnected) {
     return <Loader message={"Connecting..."} />;

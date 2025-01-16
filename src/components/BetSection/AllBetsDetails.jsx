@@ -1,17 +1,16 @@
 import React from "react";
-// import { PiCopySimpleFill } from "react-icons/pi";
 import { IoClose } from "react-icons/io5";
 import { formatDate, formateTime } from "../../utility/helper";
 
-function RoundDetails({
-  rondDetails,
-  handleRoundDetails,
+function AllBetsDetails({
+  setAllDetails,
   singleBetData,
-  setRondDetails,
+  allDetails,
+  handleAllBetsDetails,
 }) {
   const handleOutsideClick = (e) => {
     if (e.target === e.currentTarget) {
-      setRondDetails(false);
+      setAllDetails(false);
     }
   };
   let firstReel, secondReel, thirdReel;
@@ -40,11 +39,11 @@ function RoundDetails({
 
   return (
     <div
-      className={`round-overlay ${rondDetails ? "overlay-open" : ""} `}
+      className={`round-overlay ${allDetails ? "overlay-open" : ""} `}
       onClick={handleOutsideClick}
     >
       <div
-        className={`round-render ${rondDetails ? "modal-show" : "modal-close"}`}
+        className={`round-render ${allDetails ? "modal-show" : "modal-close"}`}
       >
         <div className="start-modal">
           <div className="start-modal-head">
@@ -53,24 +52,24 @@ function RoundDetails({
               {/* 4266a75f-3ed4-479... */}
               {/* <PiCopySimpleFill /> */}
             </div>
-            <div className="close-icon" onClick={handleRoundDetails}>
+            <div className="close-icon" onClick={handleAllBetsDetails}>
               <IoClose />
             </div>
           </div>
 
           <div className="start-modal-row">
             <div className="start-title">Match ID:</div>
-            <div className="start-text">{singleBetData?.match_id}</div>
+            <div className="start-text">{singleBetData?.mthId}</div>
           </div>
           <div className="start-modal-row">
             <div className="start-title">User ID:</div>
-            <div className="start-text">{singleBetData?.player_id}</div>
+            <div className="start-text">{singleBetData?.urNm}</div>
           </div>
           <div className="start-modal-row">
             <div className="start-title">Date:</div>
             <div className="start-text">
-              {formatDate(singleBetData?.created_at)},{" "}
-              {formateTime(singleBetData?.created_at)}
+              {formatDate(singleBetData?.timeStamps)},{" "}
+              {formateTime(singleBetData?.timeStamps)}
             </div>
           </div>
           <div className="start-modal-row">
@@ -78,7 +77,7 @@ function RoundDetails({
               <div className="start-modal-col-flat">
                 <div className="start-modal-col-lable">Bet Amount</div>
                 <div className="start-modal-col-value">
-                  {singleBetData?.bet_amt?.toFixed(2)}
+                  {singleBetData?.betAmt?.toFixed(2)}
                 </div>
               </div>
             </div>
@@ -86,7 +85,7 @@ function RoundDetails({
               <div className="start-modal-col-flat">
                 <div className="start-modal-col-lable">Multiplier</div>
                 <div className="start-modal-col-value">
-                  x{singleBetData?.result?.multiplier}
+                  x{singleBetData?.winCombo?.multiplier}
                 </div>
               </div>
             </div>
@@ -94,7 +93,7 @@ function RoundDetails({
               <div className="start-modal-col-flat">
                 <div className="start-modal-col-lable">Payout</div>
                 <div className="start-modal-col-value">
-                  {singleBetData?.won_amt?.toFixed(2)}
+                  {singleBetData?.payout?.toFixed(2)}
                 </div>
               </div>
             </div>
@@ -233,4 +232,4 @@ function RoundDetails({
   );
 }
 
-export default RoundDetails;
+export default AllBetsDetails;

@@ -107,7 +107,6 @@ export default class PixiApp {
   symbolSize;
   symbolGap;
   symbolContainerHeight;
-
   reelWidth;
   symbolPositionHeight;
   app;
@@ -135,11 +134,19 @@ export default class PixiApp {
     this.reelWidth = props.w / 5;
     this.symbolPositionHeight = props.h / 3;
     this.socket = props.socket.socket;
+    this.betResultCounter = 0;
     this.socket.on("BET_RESULT", (data) => {
       console.log("pixi", data);
+      this.betResultCounter++;
+
+      // Log the counter value
+      console.log(
+        "BET_RESULT event triggered. Counter: " + this.betResultCounter
+      );
+
       // sp.startPlay(data);
       this.newPositions = [];
-      this.newPositions = data.reels[2];
+      this.newPositions = data.reels[1];
       if (this.newPositions) {
         this.play();
       }
@@ -599,7 +606,7 @@ export default class PixiApp {
           const reelComplete = true;
           return reelComplete;
         });
-      },200)
+      },1200)
    
       // this.resetCompletedItemsCallback();
     };
@@ -684,7 +691,7 @@ export default class PixiApp {
             case !finishing: {
               const pos = this.newPositions[index];
               const endPos = getBallPosition(index, pos);
-              console.log(endPos);
+              // console.log(endPos);
 
               const diff = target % textureStartConfig[0].length;
               const trueDiff =

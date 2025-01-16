@@ -18,6 +18,7 @@ function Game({
   isBetting,
   socket,
   winCombo,
+ 
   // resultData,
 }) {
   const MIN_AMOUNT = 10;
@@ -69,6 +70,7 @@ function Game({
         setSpin={setSpin}
         resultData={resultData}
         socket={socket}
+        
       ></BallSlot>
 
       {/* BetButton and InputSection */}
