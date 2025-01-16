@@ -19,14 +19,15 @@ export const rulesData = [
       p4: "2 out of 5 balls are same type",
       p5: "Two pairs of balls are same type",
       p6: "3 out of 5 balls are same type",
-      p7: "3 balls are of the same type and the other 2 balls are of the same type",
+      p7: "3 balls are of the same type and the other 2 balls ",
       p8: "4 out of 5 balls are same type",
-      p9: "All 5 balls are same type",
+      p9: "are of the same type",
+      p10: "All 5 balls are same type",
 
       heading3: "RTP",
-      p10: `Game relies on a coefficient called "RTP" (Return to Player) which is the`,
-      p11:  `statistical average of payouts over billions of rounds.`,
-      p12: "Ball & Ball has RTP 97.0%",
+      p11: `Game relies on a coefficient called "RTP" (Return to Player) which `,
+      p12:  `is the statistical average of payouts over billions of rounds.`,
+      p13: "Ball & Ball has RTP 97.0%",
     },
   },
   // {
@@ -40,8 +41,8 @@ export const rulesData = [
     title: "Settings",
 
     content: {
-      heading: `Click the gear icon in the top right corner of the screen to open the settings `,
-      heading1:"menu. In Settings you can:",
+      heading: `Click the gear icon in the top right corner of the screen to open  `,
+      heading1:"the settings gmenu. In Settings you can:",
   
       p2: "view bet limits: Minimum bet, Maximum bet, Maximum Profit",
       p3: "turn on/off sounds",

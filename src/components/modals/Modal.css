@@ -607,3 +607,13 @@
   right: 0.25rem;
   top: 0.25rem;
 }
+
+.all{
+  margin-left: 22px;
+}
+
+@media (max-width: 767px){
+  .all{
+    margin-left: 22px;
+  }
+}

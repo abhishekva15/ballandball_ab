@@ -158,7 +158,6 @@ function InputSection({
           Max
         </button>
       </div>
-
       <div
         className={`game-inpute-wrapper ${
           errorInput && errorInputModal ? "input-warning" : "default-bottom"
