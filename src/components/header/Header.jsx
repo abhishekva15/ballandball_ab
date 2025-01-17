@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import "../header/Header.css";
-import { MdOutlineVolumeOff, MdOutlineVolumeUp } from "react-icons/md";
-import { IoIosArrowBack, IoMdSettings } from "react-icons/io";
+
+import { IoIosArrowBack } from "react-icons/io";
 import SettingModal from "../modals/SettingModal";
 import Limits from "../modals/Limits";
 import RulesModal from "../modals/RulesModal";
@@ -9,7 +9,7 @@ import { SoundContext } from "../../context/SoundContext";
 import { playSound, pauseSound } from "../../utility/gameSettings";
 import soundonsvg from "../../assets/Sound-1.svg";
 import soundoffsvg from "../../assets/Sound Close.svg";
-import { IoIosSettings } from "react-icons/io";
+
 import settingsvg from "../../assets/setting.svg";
 
 import { Link } from "react-router-dom";
@@ -23,7 +23,6 @@ function Header({ info, resultData, queryParams }) {
   const [payoutData, setPayoutData] = useState(0);
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
-
 
   const handleClickOutside = (event) => {
     if (

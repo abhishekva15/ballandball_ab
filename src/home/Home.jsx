@@ -27,10 +27,8 @@ function Home() {
   const [allBetData, setAllBetData] = useState([]);
   const [error, setError] = useState("");
   const [errorModal, setErrorModal] = useState(false);
-  const [winCombo, setWinCombo] = useState(false);
+  const [winComboo, setWinComboo] = useState(false);
   const { sound } = useContext(SoundContext);
-
-  
 
   let queryParams = {};
   try {
@@ -143,7 +141,7 @@ function Home() {
     if (sound) {
       playSpinSound();
     }
-    setWinCombo(false);
+    setWinComboo(false);
 
     socket.emit("SPIN", { betAmt: parseFloat(amount) });
 
@@ -153,7 +151,7 @@ function Home() {
         if (sound) {
           playWinSound();
         }
-        setWinCombo(true);
+        setWinComboo(true);
         handleResultData(data);
         setIsBetting(false);
       }, 2300);
@@ -226,7 +224,7 @@ function Home() {
               amount={amount}
               setAmount={setAmount}
               socket={socket}
-              winCombo={winCombo}
+              winComboo={winComboo}
             ></Game>
           </div>
           <div className="game-statics">

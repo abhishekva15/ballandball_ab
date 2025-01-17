@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../game/Game.css";
 
-function Combination({ amount, resultData, winCombo }) {
+function Combination({ amount, resultData, winComboo }) {
   const [profit, setProfit] = useState(0);
   const [backComb, setBackComb] = useState(null);
 
@@ -27,7 +27,7 @@ function Combination({ amount, resultData, winCombo }) {
             }}
             onMouseLeave={handleMouseLeave}
             className={`${
-              multiplier === 77 && winCombo
+              multiplier === 77 && winComboo
                 ? "combination-list-item_77"
                 : "combination-list-item"
             } ${
@@ -59,7 +59,7 @@ function Combination({ amount, resultData, winCombo }) {
             onMouseEnter={() => handleMouseEnter(10, "button_10")}
             onMouseLeave={handleMouseLeave}
             className={`${
-              multiplier === 10 && winCombo
+              multiplier === 10 && winComboo
                 ? "combination-list-item_10"
                 : "combination-list-item"
             } ${
@@ -91,7 +91,7 @@ function Combination({ amount, resultData, winCombo }) {
             onMouseEnter={() => handleMouseEnter(5, "button_5")}
             onMouseLeave={handleMouseLeave}
             className={`${
-              multiplier === 5 && winCombo
+              multiplier === 5 && winComboo
                 ? "combination-list-item_5"
                 : "combination-list-item"
             } ${
@@ -123,7 +123,7 @@ function Combination({ amount, resultData, winCombo }) {
             onMouseEnter={() => handleMouseEnter(3, "button_3")}
             onMouseLeave={handleMouseLeave}
             className={`${
-              multiplier === 3 && winCombo
+              multiplier === 3 && winComboo
                 ? "combination-list-item_3"
                 : "combination-list-item"
             } ${
@@ -155,7 +155,7 @@ function Combination({ amount, resultData, winCombo }) {
             onMouseEnter={() => handleMouseEnter(1.4, "button_1.4")}
             onMouseLeave={handleMouseLeave}
             className={`${
-              multiplier === 1.4 && winCombo
+              multiplier === 1.4 && winComboo
                 ? "combination-list-item_14"
                 : "combination-list-item"
             } ${
@@ -187,7 +187,7 @@ function Combination({ amount, resultData, winCombo }) {
             onMouseEnter={() => handleMouseEnter(0.1, "button_0.1")}
             onMouseLeave={handleMouseLeave}
             className={`${
-              multiplier === 0.1 && winCombo
+              multiplier === 0.1 && winComboo
                 ? "combination-list-item_01"
                 : "combination-list-item"
             } ${

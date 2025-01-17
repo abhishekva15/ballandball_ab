@@ -1,5 +1,5 @@
 import React from 'react'
-import { IoMdClose } from "react-icons/io";
+
 import { IoCloseSharp } from "react-icons/io5";
 import '../modals/Modal.css'
 

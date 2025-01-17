@@ -17,7 +17,7 @@ function Game({
   info,
   isBetting,
   socket,
-  winCombo,
+  winComboo,
 
   // resultData,
 }) {
@@ -59,13 +59,13 @@ function Game({
     <div className="game-container">
       {/* Combination */}
       <Combination
-        winCombo={winCombo}
+        winComboo={winComboo}
         resultData={resultData}
         amount={amount}
       ></Combination>
 
       {/* Ball slot */}
-      <BallSlot resultData={resultData} socket={socket}></BallSlot>
+      <BallSlot  socket={socket}></BallSlot>
 
       {/* BetButton and InputSection */}
       <div className={`game-betslip ${isBetting ? "bet-game-betslip" : ""}`}>

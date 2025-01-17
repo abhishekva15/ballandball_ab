@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { rulesData } from "../../utility/staticData";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
-import { IoMdClose } from "react-icons/io";
+
 import { IoCloseSharp } from "react-icons/io5";
 import "../modals/Modal.css";
 
