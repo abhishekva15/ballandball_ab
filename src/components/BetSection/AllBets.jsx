@@ -18,8 +18,8 @@ function AllBets({ allBetData }) {
       <div className="bet-content">
         <div className="tab-container">
           <div className="bet-titles">
-            <div className="single-title m-none">Game</div>
-            <div className="single-title m-center ">Player</div>
+            <div className="single-title p-left">Player</div>
+            {/* <div className="single-title m-center ">Player</div> */}
             <div className="single-title m-center m-none">Time</div>
             <div className="single-title m-center ">Bet Amount</div>
             <div className="single-title m-center">Multiplier</div>
@@ -33,15 +33,17 @@ function AllBets({ allBetData }) {
                 className="bet-row"
                 onClick={() => handleAllBetsDetails(singleBetData)}
               >
-                <div className="g-data m-none">
-                  <div className="icon-ball"></div>
-                  Ball & Ball
+                <div className="g-data ">
+                  {/* <div className="icon-ball"></div> */}
+                  {singleBetData.urNm}
                 </div>
-                <div className="g-mult g-center ">{singleBetData.urNm}</div>
+                {/* <div className="g-mult g-center ">{singleBetData.urNm}</div> */}
                 <div className="g-mult g-center m-none">
                   {formateTime(singleBetData.timeStamps)}
                 </div>
-                <div className="g-mult g-center ">{singleBetData.betAmt.toFixed(2)}</div>
+                <div className="g-mult g-center ">
+                  {singleBetData.betAmt.toFixed(2)}
+                </div>
                 <div className="g-mult g-center">
                   {singleBetData?.winCombo?.multiplier.toFixed(2)}x
                 </div>

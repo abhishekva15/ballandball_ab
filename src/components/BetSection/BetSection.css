@@ -446,7 +446,7 @@
 }
 
 div.start-title {
- font-family: "Gilroy", sans-serif;
+  font-family: "Gilroy", sans-serif;
 }
 
 .start-text {
@@ -603,11 +603,26 @@ div.start-title {
   width: 2px;
 }
 
+.w-color {
+  color: #3fcda6;
+  font-weight: 600;
+}
+
+.l-color {
+  color: #ff699f;
+  font-weight: 600;
+}
+
 @media (max-width: 767px) {
   .round-overlay {
     padding-top: 0;
     padding-bottom: 0;
     /* height: var(--viewport-height, 100vh); */
+  }
+
+  .p-left {
+    display: flex;
+    justify-content: center;
   }
 
   .round-render {

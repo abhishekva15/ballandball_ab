@@ -43,10 +43,10 @@ function MyBets({
       <div className="bet-content">
         <div className="tab-container">
           <div className="bet-titles">
-            <div className="single-title m-none">Game</div>
-            <div className="single-title m-center ">Time</div>
+            <div className="single-title m-none">Time</div>
             <div className="single-title m-center ">Bet Amount</div>
-            <div className="single-title m-center">Multiplier</div>
+            <div className="single-title m-center ">Multiplier</div>
+            <div className="single-title m-center">Status</div>
             <div className="single-title p-right">Payout</div>
           </div>
           <div className="bet-separator"></div>
@@ -61,17 +61,21 @@ function MyBets({
                   onClick={() => handleRoundDetails(singleBetData)}
                 >
                   <div className="g-data m-none">
-                    <div className="icon-ball"></div>
-                    Ball & Ball
-                  </div>
-                  <div className="g-mult g-center ">
+                    {/* <div className="icon-ball"></div> */}
                     {formateTime(singleBetData.created_at)}
                   </div>
                   <div className="g-mult g-center ">
-                    {singleBetData?.bet_amt.toFixed(2)}
+                    {singleBetData?.bet_amt?.toFixed(2)}
                   </div>
-                  <div className="g-mult g-center">
-                    {singleBetData?.result.multiplier.toFixed(2)}x
+                  <div className="g-mult g-center ">
+                    {singleBetData?.result?.multiplier.toFixed(2)}x
+                  </div>
+                  <div
+                    className={`g-mult g-center ${
+                      singleBetData?.status === "WIN" ? "w-color" : "l-color"
+                    }`}
+                  >
+                    {singleBetData?.status}
                   </div>
                   <div className="p-data g-pay">
                     {singleBetData?.won_amt.toFixed(2)}

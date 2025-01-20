@@ -134,15 +134,9 @@ export default class PixiApp {
     this.reelWidth = props.w / 5;
     this.symbolPositionHeight = props.h / 3;
     this.socket = props.socket.socket;
-    this.betResultCounter = 0;
+
     this.socket.on("BET_RESULT", (data) => {
       console.log("pixi", data);
-      this.betResultCounter++;
-
-      // Log the counter value
-      console.log(
-        "BET_RESULT event triggered. Counter: " + this.betResultCounter
-      );
 
       // sp.startPlay(data);
       this.newPositions = [];

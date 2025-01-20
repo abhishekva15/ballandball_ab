@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../game/Game.css";
+import { playPopSound, playWinSound } from "../../utility/gameSettings";
+import { SoundContext } from "../../context/SoundContext";
 
 function Combination({ amount, resultData, winComboo }) {
   const [profit, setProfit] = useState(0);
   const [backComb, setBackComb] = useState(null);
+  const { sound } = useContext(SoundContext);
 
   const handleMouseEnter = (multiplier, id) => {
     setProfit(amount * multiplier);
@@ -16,6 +19,19 @@ function Combination({ amount, resultData, winComboo }) {
   };
 
   let multiplier = resultData?.winCombo?.multiplier;
+
+  useEffect(() => {
+    setProfit(resultData?.payout);
+    if (sound) {
+      const multiplier = resultData?.winCombo?.multiplier;
+      console.log(multiplier, "Mltiplier");
+      if (multiplier < 3 && multiplier>0) {
+        playPopSound(); // Play sound for lower multiplier
+      } else {
+        playWinSound(); // Play sound for higher multiplier
+      }
+    }
+  }, [resultData]);
 
   return (
     <div className="combinations">

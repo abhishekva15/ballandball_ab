@@ -1,14 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "../BetSection/BetSection.css";
 import AllBets from "./AllBets";
 import MyBets from "./MyBets";
+import { SoundContext } from "../../context/SoundContext";
+import { playButtonSound } from "../../utility/gameSettings";
 // import { betData } from "../../utility/betSataticData";
 
-function BetSection({  resultData, queryParams, allBetData }) {
+function BetSection({ resultData, queryParams, allBetData }) {
   const [activeTab, setActiveTab] = useState(0);
   // const [allBetData, setAllBetData] = useState(betData);
+  const { sound } = useContext(SoundContext);
 
   const handleBetTab = (tabName) => {
+    if (sound) {
+      playButtonSound();
+    }
     setActiveTab(tabName);
   };
 
@@ -53,9 +59,7 @@ function BetSection({  resultData, queryParams, allBetData }) {
         <MyBets
           resultData={resultData}
           activeTab={activeTab}
-          
           queryParams={queryParams}
-          
         ></MyBets>
       )}
     </>

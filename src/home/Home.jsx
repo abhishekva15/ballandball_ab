@@ -4,7 +4,13 @@ import { useLocation } from "react-router-dom";
 import Game from "../components/game/Game";
 import BetSection from "../components/BetSection/BetSection";
 import { createSocket } from "../utility/newSocket";
-import { playSpinSound, playWinSound } from "../utility/gameSettings";
+import {
+  pauseArrowSound,
+  playSpinSound,
+  playWinSound,
+  playPopSound,
+  pausePopSound,
+} from "../utility/gameSettings";
 import eventEmitter from "../utility/eventEmiiter";
 import Loader from "../components/loader/Loader";
 import ErrorModal from "../components/error/ErrorModal";
@@ -29,8 +35,6 @@ function Home() {
   const [errorModal, setErrorModal] = useState(false);
   const [winComboo, setWinComboo] = useState(false);
   const { sound } = useContext(SoundContext);
-
-  console.log("allBetsDara", allBetData);
 
   let queryParams = {};
   try {
@@ -149,23 +153,24 @@ function Home() {
       return setShowBalance(true);
     }
     if (isBetting) return;
+
     setIsBetting(true);
+
     if (sound) {
-      playSpinSound();
+      playSpinSound(); // Play sound when the bet is placed
     }
+
     setWinComboo(false);
 
     socket.emit("SPIN", { betAmt: parseFloat(amount) });
 
     socket.once("BET_RESULT", (data) => {
-      // console.log(data?.winCombo?.multiplier);
+      console.log(data);
       setTimeout(() => {
-        if (sound) {
-          playWinSound();
-        }
         setWinComboo(true);
         handleResultData(data);
-        // setIsBetting(false);
+
+        // setIsBetting(false); // You may want to uncomment this to stop the betting state
       }, 2300);
     });
   };
