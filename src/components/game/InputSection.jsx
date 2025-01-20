@@ -35,57 +35,40 @@ function InputSection({
     }
   };
 
-  // const handleAmountChange = (event) => {
-  //   event.preventDefault();
-  //   let inputValue = event.target.value.replace(/[^0-9.]/g, "");
+  const handleAmountChange = (event) => {
+    event.preventDefault();
+    let inputValue = event.target.value;
 
-  //   if (inputValue) {
-  //     let numericValue = inputValue;
-  //     if (numericValue > MAX_AMOUNT) {
-  //       numericValue = MAX_AMOUNT;
-  //     }
-  //     setAmount(numericValue.toString());
-  //     validateAmount(inputValue);
-  //   } else {
-  //     setAmount("");
-  //   }
-  // };
+    // Step 1: Remove non-numeric characters except for the decimal point
+    inputValue = inputValue.replace(/[^0-9.]/g, "");
 
- const handleAmountChange = (event) => {
-   event.preventDefault();
-   let inputValue = event.target.value;
+    // Step 2: Remove leading zeros, but ensure we keep at least one zero if the input is empty
+    if (inputValue.startsWith("0") && inputValue.length > 1) {
+      inputValue = inputValue.replace(/^0+/, "0");
+    }
 
-   // Step 1: Remove non-numeric characters except for the decimal point
-   inputValue = inputValue.replace(/[^0-9.]/g, "");
+    // Step 3: Ensure only valid digits (1-9) follow after the initial zero
+    if (inputValue.length > 1 && inputValue[0] === "0") {
+      inputValue = "0" + inputValue.slice(1).replace(/^0+/, "");
+    }
 
-   // Step 2: Remove leading zeros, but ensure we keep at least one zero if the input is empty
-   if (inputValue.startsWith("0") && inputValue.length > 1) {
-     inputValue = inputValue.replace(/^0+/, "0");
-   }
+    // Step 4: Limit decimal part to two digits if a decimal exists
+    if (inputValue.includes(".")) {
+      const [integerPart, decimalPart] = inputValue.split(".");
+      if (decimalPart.length > 2) {
+        inputValue = `${integerPart}.${decimalPart.slice(0, 2)}`; // Limit to two decimal places
+      }
+    }
 
-   // Step 3: Ensure only valid digits (1-9) follow after the initial zero
-   if (inputValue.length > 1 && inputValue[0] === "0") {
-     inputValue = "0" + inputValue.slice(1).replace(/^0+/, "");
-   }
+    // Step 5: Check if input exceeds MAX_AMOUNT and cap the value
+    if (inputValue && parseFloat(inputValue) > MAX_AMOUNT) {
+      inputValue = MAX_AMOUNT.toString(); // Ensure it doesn't exceed the MAX_AMOUNT
+    }
 
-   // Step 4: Limit decimal part to two digits if a decimal exists
-   if (inputValue.includes(".")) {
-     const [integerPart, decimalPart] = inputValue.split(".");
-     if (decimalPart.length > 2) {
-       inputValue = `${integerPart}.${decimalPart.slice(0, 2)}`; // Limit to two decimal places
-     }
-   }
-
-   // Step 5: Check if input exceeds MAX_AMOUNT and cap the value
-   if (inputValue && parseFloat(inputValue) > MAX_AMOUNT) {
-     inputValue = MAX_AMOUNT.toString(); // Ensure it doesn't exceed the MAX_AMOUNT
-   }
-
-   // Step 6: Update state with the sanitized value
-   setAmount(inputValue);
-   validateAmount(inputValue);
- };
-
+    // Step 6: Update state with the sanitized value
+    setAmount(inputValue);
+    validateAmount(inputValue);
+  };
 
   const handleAmountChangeBlur = (event) => {
     event.preventDefault();
@@ -115,9 +98,10 @@ function InputSection({
 
   const buttonStyle = (disabled) => ({
     cursor: disabled ? "default" : "",
+    opacity: disabled ? 0.5 : 1, // Add opacity reduction for disabled buttons
   });
 
-  // amount increse function
+  // amount increase function
   const handleIncrease = () => {
     let numericValue = parseFloat(amount);
     if (isNaN(numericValue) || amount === "") {
@@ -164,9 +148,9 @@ function InputSection({
       <div className="inpute-button-sm">
         <button
           className={`inpute-button-text ${isBetting ? "c-default" : ""}`}
-          disabled={amount === MIN_AMOUNT || isBetting}
+          disabled={disableMin || isBetting}
           type="button"
-          style={{ cursor: amount === MIN_AMOUNT ? "default" : "" }}
+          style={buttonStyle(disableMin)}
           onClick={handleDecrease}
         >
           -
@@ -175,9 +159,9 @@ function InputSection({
       <div className="inpute-button-sm">
         <button
           className={`inpute-button-text ${isBetting ? "c-default" : ""}`}
-          disabled={amount === MAX_AMOUNT || isBetting}
+          disabled={disableMax || isBetting}
           type="button"
-          style={{ cursor: amount === MAX_AMOUNT ? "default" : "" }}
+          style={buttonStyle(disableMax)}
           onClick={handleIncrease}
           onKeyDown={(e) => e.key === " " && e.preventDefault()}
         >
@@ -204,7 +188,7 @@ function InputSection({
           <span className={`tooltips-box ${showTooltip ? "_show" : ""}`}>
             i
             <span className="toltips-hint">
-              Maximum Win for One Round 200,000.00
+              Maximum Win for One Round 2,00,000.00
             </span>
           </span>
         </div>
