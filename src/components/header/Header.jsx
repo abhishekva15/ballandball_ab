@@ -9,6 +9,7 @@ import { SoundContext } from "../../context/SoundContext";
 import { playSound, pauseSound } from "../../utility/gameSettings";
 import soundonsvg from "../../assets/Sound-1.svg";
 import soundoffsvg from "../../assets/Sound Close.svg";
+import { formatBalance } from "../../utility/helper";
 
 import settingsvg from "../../assets/setting.svg";
 
@@ -103,7 +104,7 @@ function Header({ info, resultData, queryParams }) {
         <div className="game-header-logo"></div>
         <div className="game-header-balance-title">Balance:</div>
         <div className="game-header-balance">
-          <div className="game-header-balance-text">{info?.bl}</div>
+          <div className="game-header-balance-text">{formatBalance(info?.bl)}</div>
           <div className={`game-header-balance-delta ${payoutClass}`}>
             {payoutData === 0 ? "-" : "+"}
             {payoutData.toFixed(2)}
