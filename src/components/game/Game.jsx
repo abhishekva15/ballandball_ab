@@ -25,7 +25,6 @@ function Game({
   const MAX_AMOUNT = Math.min(info?.bl, 20000.0);
   const tooltipTimeout = useRef(null);
   const [showTooltip, setShowTooltip] = useState(false);
-
   const { sound } = useContext(SoundContext);
 
   useEffect(() => {
@@ -65,11 +64,14 @@ function Game({
       ></Combination>
 
       {/* Ball slot */}
-      <BallSlot  socket={socket}></BallSlot>
+      <BallSlot socket={socket}></BallSlot>
 
       {/* BetButton and InputSection */}
       <div className={`game-betslip ${isBetting ? "bet-game-betslip" : ""}`}>
-        <BetButton handlePlacebet={handlePlacebet}></BetButton>
+        <BetButton
+          handlePlacebet={handlePlacebet}
+          isBetting={isBetting}
+        ></BetButton>
         <InputSection
           isBetting={isBetting}
           amount={amount}

@@ -607,6 +607,7 @@ div.start-title {
   .round-overlay {
     padding-top: 0;
     padding-bottom: 0;
+    /* height: var(--viewport-height, 100vh); */
   }
 
   .round-render {
