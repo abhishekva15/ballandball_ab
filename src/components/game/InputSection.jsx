@@ -23,7 +23,7 @@ function InputSection({
     if (!value) {
       setErrorInput("Minimum bet amount is 10.00");
       setErrorInputModal(true);
-    } else if (Number(value) < 1.01) {
+    } else if (Number(value) < 10) {
       setErrorInput("Minimum bet amount is 10.00");
       setErrorInputModal(true);
     } else if (Number(value) > 20000) {
@@ -35,21 +35,57 @@ function InputSection({
     }
   };
 
-  const handleAmountChange = (event) => {
-    event.preventDefault();
-    let inputValue = event.target.value.replace(/[^0-9.]/g, "");
+  // const handleAmountChange = (event) => {
+  //   event.preventDefault();
+  //   let inputValue = event.target.value.replace(/[^0-9.]/g, "");
 
-    if (inputValue) {
-      let numericValue = inputValue;
-      if (numericValue > MAX_AMOUNT) {
-        numericValue = MAX_AMOUNT;
-      }
-      setAmount(numericValue.toString());
-      validateAmount(inputValue);
-    } else {
-      setAmount("");
-    }
-  };
+  //   if (inputValue) {
+  //     let numericValue = inputValue;
+  //     if (numericValue > MAX_AMOUNT) {
+  //       numericValue = MAX_AMOUNT;
+  //     }
+  //     setAmount(numericValue.toString());
+  //     validateAmount(inputValue);
+  //   } else {
+  //     setAmount("");
+  //   }
+  // };
+
+ const handleAmountChange = (event) => {
+   event.preventDefault();
+   let inputValue = event.target.value;
+
+   // Step 1: Remove non-numeric characters except for the decimal point
+   inputValue = inputValue.replace(/[^0-9.]/g, "");
+
+   // Step 2: Remove leading zeros, but ensure we keep at least one zero if the input is empty
+   if (inputValue.startsWith("0") && inputValue.length > 1) {
+     inputValue = inputValue.replace(/^0+/, "0");
+   }
+
+   // Step 3: Ensure only valid digits (1-9) follow after the initial zero
+   if (inputValue.length > 1 && inputValue[0] === "0") {
+     inputValue = "0" + inputValue.slice(1).replace(/^0+/, "");
+   }
+
+   // Step 4: Limit decimal part to two digits if a decimal exists
+   if (inputValue.includes(".")) {
+     const [integerPart, decimalPart] = inputValue.split(".");
+     if (decimalPart.length > 2) {
+       inputValue = `${integerPart}.${decimalPart.slice(0, 2)}`; // Limit to two decimal places
+     }
+   }
+
+   // Step 5: Check if input exceeds MAX_AMOUNT and cap the value
+   if (inputValue && parseFloat(inputValue) > MAX_AMOUNT) {
+     inputValue = MAX_AMOUNT.toString(); // Ensure it doesn't exceed the MAX_AMOUNT
+   }
+
+   // Step 6: Update state with the sanitized value
+   setAmount(inputValue);
+   validateAmount(inputValue);
+ };
+
 
   const handleAmountChangeBlur = (event) => {
     event.preventDefault();
@@ -166,10 +202,13 @@ function InputSection({
         <div className="inpute-name-text">
           Bet Amount
           <span className={`tooltips-box ${showTooltip ? "_show" : ""}`}>
-            i<span className="toltips-hint">Maximum Win for One Round 200,000.00</span>
+            i
+            <span className="toltips-hint">
+              Maximum Win for One Round 200,000.00
+            </span>
           </span>
         </div>
-        <input 
+        <input
           type="text"
           inputMode="numeric"
           placeholder="Enter Bet Amount "

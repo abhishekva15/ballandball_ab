@@ -30,6 +30,8 @@ function Home() {
   const [winComboo, setWinComboo] = useState(false);
   const { sound } = useContext(SoundContext);
 
+  console.log("allBetsDara", allBetData);
+
   let queryParams = {};
   try {
     queryParams = JSON.parse(
@@ -41,6 +43,17 @@ function Home() {
   } catch (e) {
     queryParams = {};
   }
+
+  const handleBet = (data) => {
+    try {
+      setAllBetData((oldata) => {
+        const newData = [...new Set([data, ...oldata])];
+        return newData.slice(0, 10);
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   useEffect(() => {
     if (queryParams.id) {
@@ -67,6 +80,16 @@ function Home() {
         }
       });
 
+      socketInstance.on("ALL_BETS", (data) => {
+        try {
+          setTimeout(() => {
+            handleBet(data);
+          }, 2300);
+        } catch (error) {
+          console.error("Error handling ALL_BETS event:", error);
+        }
+      });
+
       socketInstance.on("ERROR", (data) => {
         setError(data);
         setErrorModal(true);
@@ -90,17 +113,6 @@ function Home() {
     }
   };
 
-  const handleBet = (data) => {
-    try {
-      setAllBetData((oldata) => {
-        const newData = [...new Set([data, ...oldata])];
-        return newData.slice(0, 10);
-      });
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
   // console.log("Single", allBetData);
 
   useEffect(() => {
@@ -115,21 +127,21 @@ function Home() {
     };
   }, [errorModal]);
 
-  // useEffect(() => {
-  //   const handleReelComplete = (callback) => {
-  //     const reelCompleted = callback();
+  useEffect(() => {
+    const handleReelComplete = (callback) => {
+      const reelCompleted = callback();
 
-  //     if (reelCompleted) {
-  //       setIsBetting(false);
-  //     }
-  //   };
+      if (reelCompleted) {
+        setIsBetting(false);
+      }
+    };
 
-  //   eventEmitter.on("reelComplete", handleReelComplete);
+    eventEmitter.on("reelComplete", handleReelComplete);
 
-  //   return () => {
-  //     eventEmitter.off("reelComplete", handleReelComplete);
-  //   };
-  // }, []);
+    return () => {
+      eventEmitter.off("reelComplete", handleReelComplete);
+    };
+  }, []);
 
   const handlePlacebet = () => {
     // Check if the bet amount is valid
@@ -153,12 +165,7 @@ function Home() {
         }
         setWinComboo(true);
         handleResultData(data);
-        setIsBetting(false);
-      }, 2300);
-    });
-    socket.once("ALL_BETS", (data) => {
-      setTimeout(() => {
-        handleBet(data);
+        // setIsBetting(false);
       }, 2300);
     });
   };

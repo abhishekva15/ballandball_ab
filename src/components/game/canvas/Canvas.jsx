@@ -25,12 +25,7 @@ import "./canvas.css";
 //   return !!match;
 // }
 function Canvas(socket) {
-  
- 
   console.log(`re render `);
-  
- 
-  
 
   // console.log(socket)
   const [mobile, setMobile] = useState(false);
@@ -73,12 +68,53 @@ function Canvas(socket) {
   //     uiCommon: { isMobile },
   //   } = useStore();
 
+  // const startGame = () => {
+  //   containerRef.current = document.getElementById("canvas-container");
+
+  //   if (!containerRef.current) return;
+
+  //   appRef.current = new PixiApp({
+  //     w: containerRef.current.offsetWidth,
+  //     h: containerRef.current.offsetHeight,
+  //     ratio: ratioRef.current,
+  //     isMobile: mobile,
+  //     completeItemsCallback: () => {}, // Add appropriate callback function
+  //     resetCompletedItemsCallback: () => {}, // Add appropriate callback function
+  //     playAudio: () => {}, // Add appropriate function
+  //     socket,
+  //   });
+
+  //   if (
+  //     appRef.current &&
+  //     appRef.current.app.view instanceof HTMLCanvasElement
+  //   ) {
+  //     containerRef.current.appendChild(appRef.current.app.view);
+  //   }
+  //   setStarted(true);
+  // };
   const startGame = () => {
+    // Ensure container reference is set correctly
     containerRef.current = document.getElementById("canvas-container");
-
     if (!containerRef.current) return;
-    
 
+    // Clean up previous PixiApp instance if it exists
+    if (appRef.current) {
+      // Destroy the previous PIXI application
+      // appRef.current.app.destroy(true, {
+      //   // children: true,
+      //   texture: true,
+      //   baseTexture: true,
+      // });
+      appRef.current = null;
+
+      // Remove the old canvas if it exists
+      // const oldCanvas = document.getElementById("game-canvas");
+      // if (oldCanvas) {
+      //   oldCanvas.remove();
+      // }
+    }
+
+    // Create a new PixiApp instance
     appRef.current = new PixiApp({
       w: containerRef.current.offsetWidth,
       h: containerRef.current.offsetHeight,
@@ -90,12 +126,15 @@ function Canvas(socket) {
       socket,
     });
 
+    // Append the new canvas to the container
     if (
       appRef.current &&
       appRef.current.app.view instanceof HTMLCanvasElement
     ) {
       containerRef.current.appendChild(appRef.current.app.view);
     }
+
+    // Mark the game as started
     setStarted(true);
   };
 
@@ -105,15 +144,35 @@ function Canvas(socket) {
   }, []);
 
   useEffect(() => {
-    if (!started) return;
-    console.log("hiii");
+    // if (!started) return;
+    console.log("hiii2");
 
     document.getElementById("game-canvas")?.remove();
-    setTimeout(() => {
-      startGame();
-    }, 500);
+    containerRef.current = null;
+    appRef.current = null;
+    // appRef.current.app.removeChildren();
+
+    // setTimeout(() => {
+    startGame();
+    // }, 100);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mobile]);
+  // useEffect(() => {
+  //   if (!started) return;
+
+  //   console.log("Resizing and restarting game");
+
+  //   // Cleanup existing canvas and PixiJS app
+  //   if (appRef.current) {
+  //     // appRef.current.destroy(true, { children: true, texture: true, baseTexture: true });
+  //     appRef.current = null;
+  //   }
+  //   document.getElementById("game-canvas")?.remove();
+  //   containerRef.current = null;
+
+  //   // Restart the game
+  //   startGame();
+  // }, [mobile, started]);
 
   //   useEffect(() => {
   //     if (colors) {

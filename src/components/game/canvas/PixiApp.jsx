@@ -151,6 +151,15 @@ export default class PixiApp {
         this.play();
       }
     });
+    if (this.app) {
+      console.log("in App");
+      this.app.splice(0);
+      this.app.destroy();
+      PIXI.Assets.cache.reset();
+      PIXI.Assets.unload();
+      this.app = null;
+    }
+
     // console.log(this.socket.socket)
     this.app = new PIXI.Application({
       width: props.w,
@@ -167,14 +176,6 @@ export default class PixiApp {
     this.init();
     //Results
     this.gameStarted = false;
-
-    // 1: PIXI.Texture.from("basketball"),
-    // 2: PIXI.Texture.from("football"),
-    // 3: PIXI.Texture.from("pool"),
-    // 4: PIXI.Texture.from("tennis"),
-    // 5: PIXI.Texture.from("volleyball"),
-    // 6: PIXI.Texture.from("baseball"),
-    // 7: PIXI.Texture.from("bowling"),
 
     this.newPositions = [];
     this.currentPositions = [];
@@ -210,9 +211,11 @@ export default class PixiApp {
     ];
 
     // Dynamically add assets to the PIXI.Assets loader
-    assets.forEach((asset) =>
-      PIXI.Assets.add({ alias: asset.key, src: asset.path })
-    );
+    assets.forEach((asset) => {
+      if (!PIXI.Assets.cache.has(asset.path)) {
+        PIXI.Assets.add({ alias: asset.key, src: asset.path });
+      }
+    });
 
     try {
       // Load all assets and wait for completion
@@ -222,7 +225,6 @@ export default class PixiApp {
       console.error("Asset loading error:", error);
     }
   }
-
   onAssetsLoaded() {
     const slotTextures = {
       0: PIXI.Texture.from("bowling"),
@@ -530,25 +532,7 @@ export default class PixiApp {
     });
 
     this.app.stage.addChild(reelContainer);
-    // const square = new PIXI.Graphics();
 
-    // // Set the fill color and draw a square
-    // square.beginFill(0xff0000); // Red color
-    // square.drawRect(200, 100, 100, 100); // x, y, width, height
-    // square.endFill();
-
-    // // Position the square (optional)
-    // square.x = 200;
-    // square.y = 150;
-    // square.interactive = true;
-    // square.on("pointerdown", () => {
-    //   console.log("hii");
-    //   if (this.play) {
-    //     this.play();
-    //   }
-    // });
-    // // Add the square to the stage
-    // this.app.stage.addChild(square);
     reelContainer.y = topContainerOffset;
     reelContainer.x = Math.round(this.app.screen.width - this.reelWidth * 5);
 
@@ -593,7 +577,6 @@ export default class PixiApp {
     };
 
     const reelsComplete = async () => {
-     
       this.spinIteration = 0;
       this.gameStarted = false;
       this.currentPositions = this.newPositions;
@@ -601,13 +584,13 @@ export default class PixiApp {
       await timeout(1);
       this.newPositions = [];
       this.completedItems = [];
-      setTimeout(()=>{
+      setTimeout(() => {
         eventEmitter.emit("reelComplete", () => {
           const reelComplete = true;
           return reelComplete;
         });
-      },1200)
-   
+      }, 1200);
+
       // this.resetCompletedItemsCallback();
     };
 
