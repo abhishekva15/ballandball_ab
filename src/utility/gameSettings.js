@@ -4,6 +4,7 @@ import Win from "../sound/win.394c2f75.mp3";
 import ButtonClick from "../sound/amount.61415b97.mp3";
 import Arrow from "../sound/arrows.e5522174.mp3";
 import Pop from "../sound/pop_1.cd1056d7.mp3";
+import Pop_5 from "../sound/pop_5.1ce3e994.mp3";
 
 
 let spinSound;
@@ -11,6 +12,7 @@ let winSound;
 let buttonSound;
 let arrow;
 let pop;
+let pop_5
 let sound = true;
 
 export function loadSounds() {
@@ -64,6 +66,16 @@ export function loadSounds() {
     onplayerror: (error) => {},
   });
 
+  pop_5 = new Howl({
+    src: [Pop_5],
+    html5: false,
+    volume: 1,
+    loop: false,
+    onloaderror: (error) => {},
+    onload: () => {},
+    onplayerror: (error) => {},
+  });
+
 }
 
 export function setSoundVolume(volume) {
@@ -72,6 +84,7 @@ export function setSoundVolume(volume) {
   if (arrow) arrow.volume(volume);
   if (buttonSound) buttonSound.volume(volume);
   if (pop) pop.volume(volume);
+  if (pop_5) pop_5.volume(volume);
 }
 
 export function playSpinSound() {
@@ -134,6 +147,18 @@ export function pausePopSound() {
   }
 }
 
+export function playPop5Sound() {
+  if (pop_5 && !pop_5.playing()) {
+    pop_5.play();
+  }
+}
+
+export function pausePop5Sound() {
+  if (pop_5 && pop_5.playing()) {
+    pop_5.pause();
+  }
+}
+
 export function playSound() {
   if (sound) {
     spinSound.mute(false);
@@ -141,6 +166,7 @@ export function playSound() {
     buttonSound.mute(false);
     arrow.mute(false);
     pop.mute(false)
+    pop_5.mute(false)
   }
 }
 
@@ -150,6 +176,7 @@ export function pauseSound() {
   buttonSound.mute(true);
   arrow.mute(true);
   pop.mute(true)
+  pop_5.mute(true)
 }
 
 export const setMuted = (muted) => {

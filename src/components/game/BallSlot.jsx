@@ -9,7 +9,9 @@ function BallSlot({ socket }) {
     const handleResize = () => {
       // Increment the key to force remounting
       // setTimeout(() => {
+
       setKey((prevKey) => prevKey + 1);
+      window.location.reload();
     };
 
     window.addEventListener("resize", handleResize);

@@ -1,6 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import "../game/Game.css";
-import { playPopSound, playWinSound } from "../../utility/gameSettings";
+import {
+  playPop5Sound,
+  playPopSound,
+  playWinSound,
+} from "../../utility/gameSettings";
 import { SoundContext } from "../../context/SoundContext";
 
 function Combination({ amount, resultData, winComboo }) {
@@ -23,12 +27,16 @@ function Combination({ amount, resultData, winComboo }) {
   useEffect(() => {
     setProfit(resultData?.payout);
     if (sound) {
-      const multiplier = resultData?.winCombo?.multiplier;
-      console.log(multiplier, "Mltiplier");
-      if (multiplier < 3 && multiplier>0) {
-        playPopSound(); // Play sound for lower multiplier
-      } else {
-        playWinSound(); // Play sound for higher multiplier
+      if (multiplier > 0) {
+        playPopSound();
+        if (multiplier >= 1.5) {
+          setTimeout(() => {
+            playPop5Sound(); // Fix missing invocation
+          }, 500);
+          setTimeout(() => {
+            playWinSound();
+          }, 800);
+        }
       }
     }
   }, [resultData]);
@@ -39,11 +47,11 @@ function Combination({ amount, resultData, winComboo }) {
         <div className="combination-item-wrapper">
           <button
             onMouseEnter={() => {
-              handleMouseEnter(77, "button_77");
+              handleMouseEnter(7, "button_77");
             }}
             onMouseLeave={handleMouseLeave}
             className={`${
-              multiplier === 77 && winComboo
+              multiplier === 7 && winComboo
                 ? "combination-list-item_77"
                 : "combination-list-item"
             } ${
@@ -67,15 +75,15 @@ function Combination({ amount, resultData, winComboo }) {
                 <div className="ball-inner ball-inner-black"></div>
               </div>
             </div>
-            <div className="combination-item-text">77.00x</div>
+            <div className="combination-item-text">7.00x</div>
           </button>
         </div>
         <div className="combination-item-wrapper">
           <button
-            onMouseEnter={() => handleMouseEnter(10, "button_10")}
+            onMouseEnter={() => handleMouseEnter(5, "button_10")}
             onMouseLeave={handleMouseLeave}
             className={`${
-              multiplier === 10 && winComboo
+              multiplier === 5 && winComboo
                 ? "combination-list-item_10"
                 : "combination-list-item"
             } ${
@@ -99,15 +107,15 @@ function Combination({ amount, resultData, winComboo }) {
                 <div className="ball-inner"></div>
               </div>
             </div>
-            <div className="combination-item-text">10.00x</div>
+            <div className="combination-item-text">5.00x</div>
           </button>
         </div>
         <div className="combination-item-wrapper">
           <button
-            onMouseEnter={() => handleMouseEnter(5, "button_5")}
+            onMouseEnter={() => handleMouseEnter(2.5, "button_5")}
             onMouseLeave={handleMouseLeave}
             className={`${
-              multiplier === 5 && winComboo
+              multiplier === 2.5 && winComboo
                 ? "combination-list-item_5"
                 : "combination-list-item"
             } ${
@@ -131,15 +139,15 @@ function Combination({ amount, resultData, winComboo }) {
                 <div className="ball-holed ball-inner-black"></div>
               </div>
             </div>
-            <div className="combination-item-text">5.00x</div>
+            <div className="combination-item-text">2.50x</div>
           </button>
         </div>
         <div className="combination-item-wrapper">
           <button
-            onMouseEnter={() => handleMouseEnter(3, "button_3")}
+            onMouseEnter={() => handleMouseEnter(1.5, "button_3")}
             onMouseLeave={handleMouseLeave}
             className={`${
-              multiplier === 3 && winComboo
+              multiplier === 1.5 && winComboo
                 ? "combination-list-item_3"
                 : "combination-list-item"
             } ${
@@ -163,15 +171,15 @@ function Combination({ amount, resultData, winComboo }) {
                 <div className="ball-inner"></div>
               </div>
             </div>
-            <div className="combination-item-text">3.00x</div>
+            <div className="combination-item-text">1.50x</div>
           </button>
         </div>
         <div className="combination-item-wrapper">
           <button
-            onMouseEnter={() => handleMouseEnter(1.4, "button_1.4")}
+            onMouseEnter={() => handleMouseEnter(0.5, "button_1.4")}
             onMouseLeave={handleMouseLeave}
             className={`${
-              multiplier === 1.4 && winComboo
+              multiplier === 0.5 && winComboo
                 ? "combination-list-item_14"
                 : "combination-list-item"
             } ${
@@ -195,7 +203,7 @@ function Combination({ amount, resultData, winComboo }) {
                 <div className="ball-inner"></div>
               </div>
             </div>
-            <div className="combination-item-text">1.40x</div>
+            <div className="combination-item-text">0.50x</div>
           </button>
         </div>
         <div className="combination-item-wrapper">
