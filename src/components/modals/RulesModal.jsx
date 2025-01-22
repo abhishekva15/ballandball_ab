@@ -59,11 +59,14 @@ function RulesModal({ handleRules, setOpenRules }) {
       case 2:
         return (
           <>
-            <div className="rule-para ">{el.content.heading}</div>
+            <div className="rule-para">{el.content.heading}</div>
             <div className="rule-para r-bottom">{el.content.heading1}</div>
-            
+
+            <li className="rule-para">{el.content.p1}</li>
             <li className="rule-para">{el.content.p2}</li>
-            <li className="rule-para">{el.content.p3}</li>
+            <div className="rule-para new-max">{el.content.p3}</div>
+            <li className="rule-para">{el.content.p5}</li>
+            <li className="rule-para">{el.content.p4}</li>
           </>
         );
       case 3:
@@ -79,7 +82,6 @@ function RulesModal({ handleRules, setOpenRules }) {
       default:
         return (
           <>
-            <div className="rule-para r-bottom">{el.content.p1}</div>
             <div className="rule-para">{el.content.p2}</div>
           </>
         );

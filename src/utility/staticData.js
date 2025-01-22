@@ -20,8 +20,8 @@ export const rulesData = [
       p5: "Two pairs of balls are same type",
       p6: "3 out of 5 balls are same type",
       p7: "3 balls are of the same type and the other 2 balls ",
-      p8: "4 out of 5 balls are same type",
-      p9: "are of the same type",
+      p8: "4 out of 5 balls are same type are of the same type",
+      
       p10: "All 5 balls are same type",
 
       heading3: "RTP",
@@ -41,18 +41,22 @@ export const rulesData = [
     title: "Settings",
 
     content: {
-      heading: `Click the gear icon in the top right corner of the screen to open  `,
-      heading1:"the settings gmenu. In Settings you can:",
-  
-      p2: "view bet limits: Minimum bet, Maximum bet, Maximum Profit",
-      p3: "turn on/off sounds",
-    },
+      heading: `Click the gear icon in the top right corner of the screen to open`,
+      heading1: "the settings menu. In Settings you can:",
+      p1: "view user name",
+      p2: "view bet limits: Minimum bet, Maximum bet,",
+      p3: "Maximum win for one Round.",
+      p5: "view the rules",
+      p4: "turn on/off sounds",
+    }
+    
+    
   },
   {
     title: "Bets History",
     content: {
       heading:
-        "At the bottom of each Turbo game there is a panel with information about:",
+        "At the bottom of game there is a panel with information about:",
       p1: `"All bets" - recently played games across all users`,
       p2: `"My bets" - list of your recent bets`,
       heading2: "You can click on any bet to see the details.",
@@ -61,8 +65,7 @@ export const rulesData = [
   {
     title: "Version",
     content: {
-      p1: `Game version: "1.0.3"`,
-      p2: `RNG version: "2.0.0"`,
+      p2: `Version: "1.0.0"`,
     },
   },
   // Add more rules here as needed
