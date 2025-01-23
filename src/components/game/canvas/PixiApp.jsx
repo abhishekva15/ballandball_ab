@@ -136,7 +136,7 @@ export default class PixiApp {
     this.socket = props.socket.socket;
 
     this.socket.on("BET_RESULT", (data) => {
-      console.log("pixi", data);
+      // console.log("pixi", data);
 
       // sp.startPlay(data);
       this.newPositions = [];
@@ -146,7 +146,7 @@ export default class PixiApp {
       }
     });
     if (this.app) {
-      console.log("in App");
+      // console.log("in App");
       this.app.splice(0);
       this.app.destroy();
       PIXI.Assets.cache.reset();

@@ -15,6 +15,7 @@ import eventEmitter from "../utility/eventEmiiter";
 import Loader from "../components/loader/Loader";
 import ErrorModal from "../components/error/ErrorModal";
 import { SoundContext } from "../context/SoundContext";
+import NoBetBalance from "../components/error/NoBetBalance";
 
 function Home() {
   const location = useLocation();
@@ -153,19 +154,15 @@ function Home() {
       return setShowBalance(true);
     }
     if (isBetting) return;
-
     setIsBetting(true);
-
     if (sound) {
       playSpinSound(); // Play sound when the bet is placed
     }
-
     setWinComboo(false);
-
     socket.emit("SPIN", { betAmt: parseFloat(amount) });
 
     socket.once("BET_RESULT", (data) => {
-      console.log(data);
+      // console.log(data);
       setTimeout(() => {
         setWinComboo(true);
         handleResultData(data);
@@ -249,6 +246,12 @@ function Home() {
         </div>
       </div>
       {errorModal && <ErrorModal error={error} setErrorModal={setErrorModal} />}
+      {showBalance && (
+        <NoBetBalance
+          showBalance={showBalance}
+          setShowBalance={setShowBalance}
+        />
+      )}
     </>
   );
 }

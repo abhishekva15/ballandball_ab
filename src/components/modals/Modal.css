@@ -458,6 +458,7 @@
   /* line-height: .9375rem; */
   padding: 0.75rem 1.5rem;
   color: #fff;
+  cursor: pointer;
 }
 
 .rules-content {

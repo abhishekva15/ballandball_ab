@@ -65,7 +65,7 @@ export const rulesData = [
   {
     title: "Version",
     content: {
-      p2: `Version: "1.0.0"`,
+      p2: ` Game Version: "1.0.0"`,
     },
   },
   // Add more rules here as needed

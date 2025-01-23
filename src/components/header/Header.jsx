@@ -90,7 +90,7 @@ function Header({ info, resultData, queryParams }) {
     <>
       <div className="game-header">
         <div className="game-header-back">
-          <Link to={`https://lobby.unicon.vip/?id=${queryParams.id}`}>
+          <Link to={`https://lobbydesign.ayodhya365.co/?id=${queryParams.id}`}>
             <IoIosArrowBack
               style={{
                 color: "#fff",
@@ -104,7 +104,9 @@ function Header({ info, resultData, queryParams }) {
         <div className="game-header-logo"></div>
         <div className="game-header-balance-title">Balance:</div>
         <div className="game-header-balance">
-          <div className="game-header-balance-text">{formatBalance(info?.bl)}</div>
+          <div className="game-header-balance-text">
+            {formatBalance(info?.bl)}
+          </div>
           <div className={`game-header-balance-delta ${payoutClass}`}>
             {payoutData === 0 ? "-" : "+"}
             {payoutData.toFixed(2)}

@@ -25,7 +25,7 @@ import "./canvas.css";
 //   return !!match;
 // }
 function Canvas(socket) {
-  console.log(`re render `);
+  // console.log(`re render `);
 
   // console.log(socket)
   const [mobile, setMobile] = useState(false);
@@ -145,7 +145,7 @@ function Canvas(socket) {
 
   useEffect(() => {
     // if (!started) return;
-    console.log("hiii2");
+    // console.log("hiii2");
 
     document.getElementById("game-canvas")?.remove();
     containerRef.current = null;
