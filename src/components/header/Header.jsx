@@ -90,7 +90,7 @@ function Header({ info, resultData, queryParams }) {
     <>
       <div className="game-header">
         <div className="game-header-back">
-          <Link to={`https://lobby.unicon.vip/?id=${queryParams.id}`}>
+          <Link to={`https://newlobby.unicon.vip/?id=${queryParams.id}`}>
             <IoIosArrowBack
               style={{
                 color: "#fff",

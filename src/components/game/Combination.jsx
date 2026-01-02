@@ -112,7 +112,7 @@ function Combination({ amount, resultData, winComboo }) {
         </div>
         <div className="combination-item-wrapper">
           <button
-            onMouseEnter={() => handleMouseEnter(2.5, "button_5")}
+            onMouseEnter={() => handleMouseEnter(2, "button_5")}
             onMouseLeave={handleMouseLeave}
             className={`${
               multiplier == 2 && winComboo
@@ -144,7 +144,7 @@ function Combination({ amount, resultData, winComboo }) {
         </div>
         <div className="combination-item-wrapper">
           <button
-            onMouseEnter={() => handleMouseEnter(1.5, "button_3")}
+            onMouseEnter={() => handleMouseEnter(1.25, "button_3")}
             onMouseLeave={handleMouseLeave}
             className={`${
               multiplier === 1.25 && winComboo
@@ -176,7 +176,7 @@ function Combination({ amount, resultData, winComboo }) {
         </div>
         <div className="combination-item-wrapper">
           <button
-            onMouseEnter={() => handleMouseEnter(0.5, "button_1.4")}
+            onMouseEnter={() => handleMouseEnter(0.7, "button_1.4")}
             onMouseLeave={handleMouseLeave}
             className={`${
               multiplier === 0.7 && winComboo
@@ -208,7 +208,7 @@ function Combination({ amount, resultData, winComboo }) {
         </div>
         <div className="combination-item-wrapper">
           <button
-            onMouseEnter={() => handleMouseEnter(0.1, "button_0.1")}
+            onMouseEnter={() => handleMouseEnter(0.25, "button_0.1")}
             onMouseLeave={handleMouseLeave}
             className={`${
               multiplier === 0.25 && winComboo
